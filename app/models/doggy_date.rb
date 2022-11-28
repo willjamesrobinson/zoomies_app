@@ -1,0 +1,2 @@
+class DoggyDate < ApplicationRecord
+end
