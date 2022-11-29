@@ -1,10 +1,15 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  GENDER = ["male", "female", "other"]
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  validates :gender, inclusion: { in: GENDER }
-  validates_numericality_of :age, only_integer: true
+  
+ 
+  has_many :matches
   has_many :dogs
+  has_many :messages
+  GENDER = ["Male", "Female"]
+  validates :first_name, :age, :gender, presence: true
+  validates :first_name, length: { minimum: 3 }
+  validates_numericality_of :age, only_integer: true 
 end
