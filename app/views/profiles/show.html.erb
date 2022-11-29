@@ -1,0 +1,25 @@
+<div class="container pb-5">
+  <h1>
+    <% @user.dogs.each do |dog| %>
+      <% if dog == @user.dogs.first %>
+        <%= "#{dog.name.capitalize} " %>
+      <% else %>
+        <%= "+ #{dog.name.capitalize}" %>
+      <% end %>
+    <% end %>
+  </h1>
+  <% @user.dogs.each do |dog| %>
+    <div>
+      <h3><%= dog.name.capitalize %></h3>
+      <p><%= dog.age %> years old</p>
+      <p><%= dog.gender.capitalize %></p>
+      <p><%= dog.size.capitalize %></p>
+      <p><%= dog.breed.capitalize %></p>
+    </div>
+  <% end %>
+  <div>
+    <h3><%= @user.first_name.capitalize %></h3>
+    <p><%= @user.age %> years old</p>
+    <p><%= @user.gender.capitalize %></p>
+  </div>
+</div>
