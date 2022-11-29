@@ -29,6 +29,11 @@
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
           </li>
+          <li>
+          <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+            <%= link_to "Sign up", new_registration_path(resource_name)%><br />
+          <% end %>
+          </li>
         <% end %>
       </ul>
     </div>
