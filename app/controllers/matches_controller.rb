@@ -15,6 +15,7 @@ class MatchesController < ApplicationController
   end
 
   def update
+    # @match = Match.find(params[:id])
   end
 
   private
