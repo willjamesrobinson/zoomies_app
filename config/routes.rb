@@ -5,5 +5,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  
+  # TODO: nest doggy_dates index, new and create actions under matches
+  resources :doggy_dates
   resources :dogs, only: [:create, :new, :edit, :update, :destroy]
 end
