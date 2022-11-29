@@ -5,8 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'faker'
 
+Dog.destroy_all
 User.destroy_all
+
 
 puts "Start creating users"
 bob = User.new(email: "seed_user_bob@ymail.com", password: "123456", age: 30, gender: "male", first_name: "Bob")
@@ -24,6 +27,29 @@ fluff = Dog.new(name: "Fluff", age: 7, gender: "female", size: "small", breed: "
 fluff.user = betty
 fuzz = Dog.new(name: "Fuzz", age: 5, gender: "male", size: "small", breed: "pomeranian")
 fuzz.user = betty
+
+num = 0
+20.times do
+  num += 1
+  details = {
+    email: Faker::Internet.email,
+    password: "123456",
+    age: 25,
+    gender: ["male", "female"].sample,
+    first_name: Faker::GreekPhilosophers.name
+  }
+
+  user = User.create(details)
+
+  Match.create(matcher_id: user.id, matchee_id: bob.id) if num.even?
+
+  if num == 1
+    puts "#{num} zoomie zoomen"
+  else
+    puts "#{num} zoomies zoomed"
+  end
+end
+
 
 if spot.save && fluff.save && fuzz.save
   puts "Created dogs Spot, Fluff & Fuzz"
