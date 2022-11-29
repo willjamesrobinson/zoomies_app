@@ -9,9 +9,10 @@
                   required: true,
                   autofocus: true %>
       <%= f.input :age,
+                  label: "Age (18+)",
                   required: true,
                   autofocus: true %>
-      <%= f.input :gender,
+      <%= f.input :gender, collection: User::GENDER,
                   required: true,
                   autofocus: true %>
       <%= f.input :email,
