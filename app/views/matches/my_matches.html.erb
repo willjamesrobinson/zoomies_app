@@ -1,0 +1,5 @@
+<h1>My Matches</h1>
+<ul><% @matches.each do |match| %>
+ <li> <%= match.matcher.first_name  %> </li>
+<% end %>
+</ul>
