@@ -11,23 +11,23 @@ class MatchesController < ApplicationController
   # Tick or X is +1, 0 added to status respectively, to correlate with MATCH
 
   def create
-    Match.create(matcher_id: current_user.id)
+    Match.create(match_params)
   end
 
   def update
     # Save
     @match = Match.find(params[:id])
     if @match.update(match_params)
-      redirect_to prematches_path, status: :see_other
+      redirect_to matches_path, status: :see_other
     else
-      redirect_to root_path, status: :unprocessable_entity, alert: "No deal"
+      redirect_to matches_path, status: :unprocessable_entity, alert: "No deal"
     end
   end
 
   private
 
   def match_params
-    params.require(:match).permit(:status)
+    params.require(:match).permit(:status, :matchee_id, :matcher_id)
   end
 
 end

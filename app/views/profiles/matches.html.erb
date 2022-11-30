@@ -1,0 +1,17 @@
+<%# Shows pending matches %>
+<ul>
+<% for count in 0..20 %>
+  <% if count < @matches.length %>
+    <li> (Prematch) <%= @matches[count].matcher.first_name%>
+      <%= link_to "Accept", match_path(@matches[count], match:{ status: "accepted" }), data: {turbo_method: "PATCH"} %>
+      <%= link_to "Decline", match_path(@matches[count], match:{status: "declined"}), data: {turbo_method: "PATCH"}  %>
+    </li>
+    <% end%>
+    <% if count < @potential_matches.length %>
+    <li> (Prospective match) <%= @potential_matches[count].matchee.first_name%>
+      <%= link_to "Accept", create_match_path(@potential_matches[count], match:{status: "pending", matchee_id: @potential_matches[count].matchee_id, matcher_id: @potential_matches[count].matcher_id}), data: {turbo_method: "POST"} %>
+      <%= link_to "Decline", create_match_path(@potential_matches[count], match:{status: "declined", matchee_id: @potential_matches[count].matchee_id, matcher_id: @potential_matches[count].matcher_id}), data: {turbo_method: "POST"}  %>
+    </li>
+    <% end%>
+<% end%>
+</ul>
