@@ -1,5 +1,8 @@
 <h1>prematches</h1>
 <ul><% @prematches.each do |prematch| %>
- <li> <%= prematch.matcher.first_name%></li>
+ <li> <%= prematch.matcher.first_name%>
+  <%= link_to "Accept", match_path(prematch, match:{ status: "accepted" }), data: {turbo_method: "PATCH"} %>
+  <%= link_to "Decline", match_path(prematch, match:{status: "declined"}), data: {turbo_method: "PATCH"}  %>
+ </li>
 <% end%>
 </ul>

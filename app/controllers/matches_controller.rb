@@ -15,9 +15,19 @@ class MatchesController < ApplicationController
   end
 
   def update
-    # @match = Match.find(params[:id])
+    # Save
+    @match = Match.find(params[:id])
+    if @match.update(match_params)
+      redirect_to prematches_path, status: :see_other
+    else
+      redirect_to root_path, status: :unprocessable_entity, alert: "No deal"
+    end
   end
 
   private
+
+  def match_params
+    params.require(:match).permit(:status)
+  end
 
 end

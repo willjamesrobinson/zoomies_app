@@ -8,7 +8,8 @@ Rails.application.routes.draw do
 
   get "users", to: "profiles#index", as: :index_profile
   get "users/:id", to: "profiles#show", as: :show_profile
-  get "prematches", to: "profiles#prematches"
+  get "prematches", to: "profiles#prematches", as: :prematches
+  resources :matches, only: [:update]
   # TODO: nest doggy_dates index, new and create actions under matches
   resources :doggy_dates
   resources :dogs, only: [:create, :new, :edit, :update, :destroy]
