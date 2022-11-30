@@ -1,21 +1,25 @@
-<h1>Matches</h1>
-<ul><% @matches.each do |match| %>
- <li> <%= match.matcher.first_name </li> %>
-<% end %>
-</ul>
+<div class="container chatroom"
+  data-controller="match-subscription"
+  data-match-subscription-match-id-value="<%= @match.id %>"
+>
+  <h1><%= @match.matcher == current_user ? @match.matchee.first_name : @match.matcher.first_name %></h1>
 
-<div class="container chatroom">
-  <h1>#<%= @match.name %></h1>
-
-  <div class="messages">
+  <div class="messages" data-match-subscription-target="messages">
     <% @match.messages.each do |message| %>
-      <div id="message-<%= message.id %>">
-        <small>
-          <strong><%= message.user.first_name %></strong>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p><%= message.content %></p>
-      </div>
+      <%= render "messages/message", message: message %>
     <% end %>
   </div>
+
+
+<%= simple_form_for [@match, @message],
+  html: { data: { action: "turbo:submit-end->match-subscription#resetForm" }, class: "d-flex" } do |f|
+%>
+  <%= f.input :content,
+    label: false,
+    placeholder: "Write a Message",
+    wrapper_html: {class: "flex-grow-1"}
+  %>
+  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+<% end %>
+
 </div>
