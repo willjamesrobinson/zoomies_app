@@ -3,6 +3,7 @@ class Match < ApplicationRecord
   has_many :doggy_dates
   belongs_to :matcher, class_name: "User", foreign_key: 'matcher_id'
   belongs_to :matchee, class_name: "User", foreign_key: 'matchee_id'
+  has_many :messages
 end
 
 # Match.statuses

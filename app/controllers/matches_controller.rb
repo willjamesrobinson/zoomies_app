@@ -1,10 +1,15 @@
 class MatchesController < ApplicationController
   def my_matches
-    @matches = current_user.matches.order(match.timestamp, desc)
+    @matches = Match.where(matchee_id: current_user.id).where(status: 2)
   end
 
   def destroy
   end
+
+  def show
+    @match = Match.find(params[:id])
+  end
+
 
   # Match Exists between two users or needs to be created?
   # Create new match, current user set to matcher, other person is matchee

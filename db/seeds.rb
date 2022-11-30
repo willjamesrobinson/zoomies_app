@@ -8,7 +8,7 @@
 require 'faker'
 
 Dog.destroy_all
-User.destroy_all
+# User.destroy_all
 
 
 puts "Start creating users"
