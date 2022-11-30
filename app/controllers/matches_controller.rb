@@ -1,6 +1,8 @@
 class MatchesController < ApplicationController
   def my_matches
-    @matches = Match.where(matchee_id: current_user.id).where(status: 2)
+    @matches1 = Match.where(matchee_id: current_user.id).where(status: 2)
+    @matches2 = Match.where(matcher_id: current_user.id).where(status: 2)
+
   end
 
   def destroy
@@ -8,6 +10,7 @@ class MatchesController < ApplicationController
 
   def show
     @match = Match.find(params[:id])
+    @message = Message.new
   end
 
 
