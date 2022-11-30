@@ -7,8 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
+Match.destroy_all
 Dog.destroy_all
 User.destroy_all
+
 
 
 puts "Start creating users"
@@ -36,7 +38,7 @@ num = 0
     password: "123456",
     age: 25,
     gender: ["male", "female"].sample,
-    first_name: Faker::GreekPhilosophers.name
+    first_name: Faker::FunnyName.name
   }
 
   user = User.create(details)
