@@ -9,7 +9,7 @@ require 'faker'
 
 Match.destroy_all
 Dog.destroy_all
-# User.destroy_all
+User.destroy_all
 
 
 
