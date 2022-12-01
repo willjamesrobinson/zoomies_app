@@ -1,0 +1,29 @@
+.tag-item {
+  display: inline-block;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-selector + label {
+  cursor: pointer;
+  color: darkgreen;
+  background-color: lightgreen;
+}
+
+.tag-selector + label {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 8px;
+  background-color: lightgreen;
+  color: darkgreen;
+  border: 1px solid black;
+}
+
+.tag-selector:checked + label {
+  background-color: darkgreen;
+  color: lightgreen;
+}

@@ -1,0 +1,55 @@
+<%# Distance radius slidey bar %>
+
+
+<%# Owner Age %>
+<div>
+  <form action="/users" method="get">
+    Age from: <input id="min_age" name="[min_age]" type="text" class="gteq" />
+    to: <input id="max_age" name="[max_age]" type="text" class="gteq" />
+    <input class="button" type="submit" value="Filter" />
+  </form>
+</div>
+
+<%# Owner Gender %>
+<div class="tag-item">
+  <form action="/users" method="get">
+    <%= f.input :category, as: :radio_buttons %>
+
+    <input class="tag-selector" type="checkbox" id="gender">
+    <label for="gender">Female</label>
+
+    <input class="tag-selector" type="checkbox" id="gender">
+    <label for="gender">Male</label>
+
+    <input class="tag-selector" type="checkbox" id="gender">
+    <label for="gender">Any</label>
+  </form>
+</div>
+
+
+<%# Dog Age %>
+<div>
+  <form action="/users" method="get">
+    Age from: <input id="min_age" name="[min_age]" type="text" class="gteq" />
+    to: <input id="max_age" name="[max_age]" type="text" class="gteq" />
+    <input class="button" type="submit" value="Filter" />
+  </form>
+</div>
+
+<%# Dog Gender %>
+<div class="tag-item">
+  <form action="/users" method="get">
+    <%= f.input :category, as: :radio_buttons %>
+
+    <input class="tag-selector" type="checkbox" id="gender">
+    <label for="gender">Good girl</label>
+
+    <input class="tag-selector" type="checkbox" id="gender">
+    <label for="gender">Good boy</label>
+
+  </form>
+</div>
+
+<%# Dog size %>
+
+<%# Dog Personality %>
