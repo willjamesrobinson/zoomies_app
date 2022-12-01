@@ -11,4 +11,6 @@ class User < ApplicationRecord
   validates :first_name, :age, :gender, presence: true
   validates :first_name, length: { minimum: 3 }
   validates_numericality_of :age, only_integer: true
+  reverse_geocoded_by :address
+  after_validation :geocode
 end
