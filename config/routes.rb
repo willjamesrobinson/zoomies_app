@@ -7,11 +7,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
+  resources :dogs, only: [:create, :new, :edit, :update, :destroy]
 
-resources :dogs, only: [:create, :new, :edit, :update, :destroy]
-
-
-  get "users", to: "profiles#index", as: :index_profile
   get "users/:id", to: "profiles#show", as: :show_profile
 
   resources :matches, only: [:update, :show] do

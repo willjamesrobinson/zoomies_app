@@ -13,13 +13,13 @@ class MatchesController < ApplicationController
     @message = Message.new
   end
 
-
-  # Match Exists between two users or needs to be created?
-  # Create new match, current user set to matcher, other person is matchee
-  # Tick or X is +1, 0 added to status respectively, to correlate with MATCH
-
   def create
-    Match.create(match_params)
+    match = Match.new(match_params)
+    if match.save
+      redirect_to matches_path
+    else
+      redirect_to matches_path, status: :unprocessable_entity, alert: "Try again later"
+    end
   end
 
   def update
@@ -28,7 +28,7 @@ class MatchesController < ApplicationController
     if @match.update(match_params)
       redirect_to matches_path, status: :see_other
     else
-      redirect_to matches_path, status: :unprocessable_entity, alert: "No deal"
+      redirect_to matches_path, status: :unprocessable_entity, alert: "Try again later"
     end
   end
 
