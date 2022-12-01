@@ -1,2 +1,8 @@
+<div class="container">
 <h1>DoggyDates#new</h1>
-<p>Find me in app/views/doggy_dates/new.html.erb</p>
+  <%= simple_form_for [@match, @doggy_date] do |f| %>
+  <%= f.datetime_field :date %>
+  <%= f.input :location %>
+  <%= f.submit %>
+  <% end %>
+</div>

@@ -1,4 +1,5 @@
 <%# Shows pending matches %>
+
 <%= turbo_stream_from "user_#{current_user.id}_pending_matches" %>
 <div id="pending_matches">
   <ul>
@@ -8,3 +9,9 @@
   </ul>
 </div>
 <%# <div id="<%= dom_id(current_user, :matches) "></div> %>
+
+ <%# <p>
+  User_Country: <%= @result %>
+  </p>  %>
+
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_29_064405) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_01_055514) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -45,11 +45,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_064405) do
   create_table "doggy_dates", force: :cascade do |t|
     t.date "date"
     t.string "location"
-    t.bigint "match_id", null: false
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["match_id"], name: "index_doggy_dates_on_match_id"
+    t.bigint "message_id"
+    t.index ["message_id"], name: "index_doggy_dates_on_message_id"
   end
 
   create_table "dogs", force: :cascade do |t|
@@ -97,13 +97,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_29_064405) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "overview"
+    t.string "address"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "doggy_dates", "matches"
+  add_foreign_key "doggy_dates", "messages"
   add_foreign_key "dogs", "users"
   add_foreign_key "matches", "users", column: "matchee_id"
   add_foreign_key "matches", "users", column: "matcher_id"
