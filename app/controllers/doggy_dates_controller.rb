@@ -1,6 +1,8 @@
 class DoggyDatesController < ApplicationController
   def index
-    # @doggy_dates = DoggyDate.where(match.matcher_id == current_user.id || match.matchee_id == current_user.id)
+    @doggy_dates = DoggyDate.all
+    # where(@message.user == current_user)
+      # || @message.match.matchee_id == current_user.id)
   end
 
   def show
@@ -35,5 +37,4 @@ class DoggyDatesController < ApplicationController
   def doggy_date_params
     params.require(:doggy_date).permit(:status, :location, :date)
   end
-
 end

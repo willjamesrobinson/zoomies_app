@@ -1,5 +1,5 @@
 <%# Shows pending matches %>
-
+<h1>Doggy Swiping</h1>
 <%= turbo_stream_from "user_#{current_user.id}_pending_matches" %>
 <div id="pending_matches">
   <ul>
@@ -12,6 +12,3 @@
 
  <%# <p>
   User_Country: <%= @result %>
-  </p>  %>
-
-
