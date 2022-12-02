@@ -1,2 +1,19 @@
-<h1>DoggyDates#index</h1>
-<p>Find me in app/views/doggy_dates/index.html.erb</p>
+<%# <h1>DoggyDates#index</h1>
+<p>Find me in app/views/doggy_dates/index.html.erb</p> %>
+
+<%# TODO Anna %>
+<div class="container">
+  <h2>🐶 Doggy Dates 🐶</h2>
+  <div>
+    <% @doggy_dates.each do |doggydate| %>
+      <p><%= "Owner: #{doggydate.message.user.first_name}"  %></p>
+      <%# <p><%= "Dog: #{doggydate.message.dog.name}" </p> %>
+      <p><%= "Date: #{doggydate.date}" %> </p>
+      <%# <p><%= "Time: #{doggydate.time} " %> </p> %>
+      <p><%= "Location: " "#{doggydate.location}"  %></p>
+      <%# <%= link_to doggy_date_path(doggydate), data: {turbo_method: :delete, turbo_confirm: "Delete Doggy Date?"} do %>
+      <%# <%= image_tag "xspoons-purple.png", width: "30px", alt: "Delete" %>
+      <%# <% end %>
+    <% end %>
+  </div>
+</div>
