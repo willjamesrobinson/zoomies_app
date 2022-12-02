@@ -8,7 +8,7 @@ class Match < ApplicationRecord
   validates_uniqueness_of :matchee_id, { scope: :matcher_id }
   validates :matchee_id, comparison: { other_than: :matcher_id }
 
-    # For create, currrent_user is matcher
+  # For create, currrent_user is matcher
   after_create_commit -> { broadcast_prepend_to "user_#{matchee.id}_pending_matches", partial: "matches/match", locals: { match: self }, target: "pending_matches" }
   # after_create_commit -> { broadcast_remove_to "user_#{matcher.id}_pending_matches" }
 
