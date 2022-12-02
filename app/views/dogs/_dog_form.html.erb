@@ -1,0 +1,9 @@
+<%= simple_form_for(dog) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :age %>
+  <%= f.input :gender, collection: Dog::GENDER %>
+  <%= f.input :size, collection: Dog::SIZE %>
+  <%= f.input :breed %>
+  <%= f.input :personality, collection: Dog::PERSONALITY, input_html: { multiple: true, class: 'multiselectuser' } %>
+  <%= f.submit %>
+<% end %>
