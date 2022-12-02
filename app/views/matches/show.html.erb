@@ -6,7 +6,13 @@
 
   <div class="messages" data-match-subscription-target="messages">
     <% @match.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+      <% if message.content == "Let's go on a date" && message.user_id == current_user.id %>
+        <%= render "doggy_dates/inviter_form", message: message   %>
+      <% elsif message.content == "Let's go on a date" && message.user_id != current_user.id %>
+        <%= render "doggy_dates/request_form", doggy_date: @doggy_date, match: @match, message: message %>
+      <% else %>
+        <%= render "messages/message", message: message %>
+      <% end %>
     <% end %>
   </div>
 
@@ -20,6 +26,6 @@
     wrapper_html: {class: "flex-grow-1"}
   %>
   <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-<% end %>
-<%= link_to "DoggyDate?", new_match_doggy_date_path(@match)
+  <% end %>
+  <%= link_to "DoggyDate?", new_match_doggy_date_path(@match) %>
 </div>
