@@ -1,0 +1,8 @@
+<div class="container">
+<h1>DoggyDates#new</h1>
+  <%= simple_form_for [@match, @doggy_date] do |f| %>
+  <%= f.datetime_field :date %>
+  <%= f.input :location %>
+  <%= f.submit %>
+  <% end %>
+</div>

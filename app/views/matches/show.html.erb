@@ -1,0 +1,25 @@
+<div class="container chatroom"
+  data-controller="match-subscription"
+  data-match-subscription-match-id-value="<%= @match.id %>"
+>
+  <h1><%= @match.matcher == current_user ? @match.matchee.first_name : @match.matcher.first_name %></h1>
+
+  <div class="messages" data-match-subscription-target="messages">
+    <% @match.messages.each do |message| %>
+      <%= render "messages/message", message: message %>
+    <% end %>
+  </div>
+
+
+<%= simple_form_for [@match, @message],
+  html: { data: { action: "turbo:submit-end->match-subscription#resetForm" }, class: "d-flex" } do |f|
+%>
+  <%= f.input :content,
+    label: false,
+    placeholder: "Write a Message",
+    wrapper_html: {class: "flex-grow-1"}
+  %>
+  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+<% end %>
+<%= link_to "DoggyDate?", new_match_doggy_date_path(@match)
+</div>

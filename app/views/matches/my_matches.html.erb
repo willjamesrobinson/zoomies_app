@@ -1,0 +1,13 @@
+<%= turbo_stream_from dom_id(current_user, :matches) %>
+<h1>My Matches</h1>
+<ul><% @matches1.each do |match| %>
+ <li> <%= link_to match.matcher.first_name, match_path(match)  %> </li>
+
+<% end %>
+<% @matches2.each do |match| %>
+ <li> <%= link_to match.matchee.first_name, match_path(match)  %> </li>
+
+<% end %>
+</ul>
+
+<div id="<%= dom_id(current_user, :matches) %>"></div>

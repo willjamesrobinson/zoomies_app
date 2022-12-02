@@ -8,3 +8,7 @@
 legend ~ div.form-check:first-of-type {
   clear: left;
 }
+
+input.radio_buttons.inline label.radio{
+  display: inline-block;
+}

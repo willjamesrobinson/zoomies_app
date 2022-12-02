@@ -1,0 +1,12 @@
+<div id="message-<%= message.id %>">
+  <small>
+    <strong><%= message.user.first_name %></strong>
+    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  </small>
+  <p><%= message.content %></p>
+  <%# If @doggy_date attached? && message.user != current_user  %>
+  <%# Render card with an accept/decline path to pending %>
+  <%# elseif @doggy_date attached? && message.user == current_user  %>
+  <%# Render same card without accept/decline path %>
+  <p></p>
+</div>
