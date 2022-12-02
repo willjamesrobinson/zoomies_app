@@ -27,7 +27,7 @@ class ProfilesController < ApplicationController
     users_matched << current_user
     users = User.all
     users_not_matched = users.select do |user|
-      users_matched.exclude?(user)
+      users_matched.exclude?(user) && !user.dogs.empty? # ONLY USERS WITH DOGS CAN MATCH
     end
     potential_matches = users_not_matched.map do |user|
       Match.new(matcher_id: current_user.id, matchee_id: user.id)
