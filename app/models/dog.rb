@@ -5,4 +5,5 @@ class Dog < ApplicationRecord
   AGE = (0..29)
   belongs_to :user
   has_many_attached :img
+  validates :name, :age, :gender, :size, :breed, presence: true
 end

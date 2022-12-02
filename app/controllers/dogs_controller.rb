@@ -8,7 +8,7 @@ class DogsController < ApplicationController
     @dog = Dog.new(dog_params)
     @dog.user = current_user
     if @dog.save
-      redirect_to dog_path(@dog)
+      redirect_to show_profile_path(@dog.user)
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,19 +21,19 @@ class DogsController < ApplicationController
   def update
     @dog = Dog.find(params[:id])
     @dog.update(dog_params)
-    redirect_to dog_path(@dog)
+    redirect_to show_profile_path(@dog.user)
   end
 
   def destroy
     @dog = Dog.find(params[:id])
     @dog.destroy
-    redirect_to dogs_path, status: :see_other
+    redirect_to show_profile_path(@dog.user), status: :see_other
   end
 
   private
 
   def dog_params
-    params.require(:dog).permit(:name, :age, :size, :gender, :breed, :personality, img: [])
+    params.require(:dog).permit(:name, :age, :size, :gender, :breed, personality: [], img: [])
   end
 
   def dog_params_no_img

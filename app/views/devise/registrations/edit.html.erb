@@ -10,15 +10,29 @@
       <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
     <% end %>
 
+    <%= f.input :first_name,
+                required: false,
+                autofocus: true %>
+    <%= f.input :age,
+                label: "Age (18+)",
+                required: false,
+                autofocus: true %>
+    <%= f.input :gender, collection: User::GENDER,
+                required: false,
+                autofocus: true %>
+    <%= f.input :overview,
+                label: "Write an overview about you and your dogs",
+                required: false,
+                autofocus: true %>
     <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
+                hint: "Leave it blank if you don't want to change it",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+                hint: "We need your current password to confirm your changes",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
   </div>

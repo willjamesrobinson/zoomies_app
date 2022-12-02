@@ -1,13 +1,21 @@
 <%= turbo_frame_tag dom_id(match) do %>
   <% if match.persisted? %>
-  <li> (Prematch) <%= match.matcher.first_name%>
+  <ul>
+    <% match.matcher.dogs.each do |dog| %>
+    <li>🐕 <%= "#{dog.name.capitalize}, #{dog.age}yr, #{dog.gender.capitalize}, #{dog.breed.capitalize}"  %></li>
+    <% end %>
+    <li>🧍 <%= link_to match.matcher.first_name.capitalize, show_profile_path(match.matcher) %>, <%= match.matcher.age %>yr ----- <%# (Prematch) %>
     <%= link_to "Accept", match_path(match, match:{ status: "accepted" }), data: {turbo_method: "PATCH"} %>
-    <%= link_to "Decline", match_path(match, match:{status: "declined"}), data: {turbo_method: "PATCH"}  %>
-  </li>
+    <%= link_to "Decline", match_path(match, match:{status: "declined"}), data: {turbo_method: "PATCH"}  %></li>
+  </ul>
   <% else %>
-  <li> (Prospective match) <%= match.matchee.first_name%>
+  <ul>
+    <% match.matchee.dogs.each do |dog| %>
+    <li>🐕 <%= "#{dog.name.capitalize}, #{dog.age}yr, #{dog.gender.capitalize}, #{dog.breed.capitalize}"  %></li>
+    <% end %>
+    <li>🧍 <%= link_to match.matchee.first_name.capitalize, show_profile_path(match.matchee) %>, <%= match.matchee.age %>yr ----- <%# (Prospective match) %>
     <%= link_to "Accept", create_match_path(match, match:{status: "pending", matchee_id: match.matchee_id, matcher_id: match.matcher_id}), data: {turbo_method: "POST"} %>
-    <%= link_to "Decline", create_match_path(match, match:{status: "declined", matchee_id: match.matchee_id, matcher_id: match.matcher_id}), data: {turbo_method: "POST"}  %>
-  </li>
+    <%= link_to "Decline", create_match_path(match, match:{status: "declined", matchee_id: match.matchee_id, matcher_id: match.matcher_id}), data: {turbo_method: "POST"}  %></li>
+  </ul>
   <% end%>
 <% end %>
