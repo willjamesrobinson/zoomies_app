@@ -26,6 +26,7 @@ class DoggyDatesController < ApplicationController
 
   def update
     # Save
+    raise
     @doggy_date = DoggyDate.find(params[:id])
     if @doggy_date.update(doggy_date_params)
       redirect_to root_path, status: :see_other
@@ -42,5 +43,4 @@ class DoggyDatesController < ApplicationController
   def doggy_date_params
     params.require(:doggy_date).permit(:status, :location, :date)
   end
-
 end
