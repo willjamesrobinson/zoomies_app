@@ -3,10 +3,10 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :doggy_dates
-  has_many :matches
+  has_many :doggy_dates, dependent: :destroy
+  has_many :matches, dependent: :destroy
   has_many :dogs, dependent: :destroy
-  has_many :messages
+  has_many :messages, dependent: :destroy
   GENDER = ["Male", "Female"]
   validates :first_name, :age, :gender, presence: true
   validates :first_name, length: { minimum: 3 }

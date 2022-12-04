@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_01_055514) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_04_224434) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,12 +43,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_01_055514) do
   end
 
   create_table "doggy_dates", force: :cascade do |t|
+    t.date "date"
     t.string "location"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "message_id"
-    t.date "date"
     t.index ["message_id"], name: "index_doggy_dates_on_message_id"
   end
 
