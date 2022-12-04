@@ -1,6 +1,6 @@
 class DoggyDatesController < ApplicationController
   def index
-    # @doggy_dates = DoggyDate.where(match.matcher_id == current_user.id || match.matchee_id == current_user.id)
+    # @doggy_dates = DoggyDate.where(match.matcher_id == current_user.id) DoggyDate.where(match.matchee_id == current_user.id)
   end
 
   def show
