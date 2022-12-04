@@ -8,4 +8,6 @@
   <%# Render card with an accept/decline path to pending %>
   <%# elseif @doggy_date attached? && message.user == current_user  %>
   <%# Render same card without accept/decline path %>
+  <p><%= link_to "Accept?", match_doggy_date_path(match, doggy_date: doggy_date, doggy_date:{ status: "accepted" }), data: {turbo_method: "PATCH"} %></p>
+  <p><%= link_to "Decline?", match_doggy_date_path(match, doggy_date: doggy_date, doggy_date:{ status: "declined" }), data: {turbo_method: "PATCH"} %></p>
 </div>

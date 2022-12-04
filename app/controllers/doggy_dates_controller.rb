@@ -26,7 +26,15 @@ class DoggyDatesController < ApplicationController
     end
   end
 
-  def edit
+  def update
+    # Save
+    raise
+    @doggy_date = DoggyDate.find(params[:id])
+    if @doggy_date.update(doggy_date_params)
+      redirect_to root_path, status: :see_other
+    else
+      redirect_to match_path, status: :unprocessable_entity, alert: "Try again later"
+    end
   end
 
   def destroy
