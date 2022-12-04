@@ -9,7 +9,7 @@ require 'faker'
 
 puts "Delete matches, users and dogs"
 
-Match.destroy_all
+# Match.destroy_all
 Dog.destroy_all
 User.destroy_all
 
