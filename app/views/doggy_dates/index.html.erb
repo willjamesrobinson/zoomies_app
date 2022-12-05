@@ -1,8 +1,13 @@
 <h1>DoggyDates#index</h1>
 <p>Find me in app/views/doggy_dates/index.html.erb</p>
-<% @doggy_dates.each do |dd| %>
-  <%= dd.status %>
-  <%= current_user.id %>
-  <p>testing</p>
-<% end %>
-
+<ul>
+  <% @pending_dates.each do |pd| %>
+    <li> <% if current_user.id == pd.match.matcher_id %>
+      <%= "#{pd.match.matchee.first_name}" %>
+    <% else %>
+      <%= "#{pd.match.matcher.first_name}" %>
+    <% end %>
+    <%= "#{pd.date}" %>
+    <%= "#{pd.location}" %>
+  <% end %> </li>
+</ul>

@@ -1,11 +1,25 @@
 class DoggyDatesController < ApplicationController
   def index
-    @doggy_dates = DoggyDate.where(booker: current_user.id).or(DoggyDate.where(bookee: current_user.id))
+    @doggy_dates = current_user.doggy_dates
+    @pending_dates = @doggy_dates.select do |pending|
+      pending.status == "pending"
+    end
+    @accepted_dates = @doggy_dates.select do |accepted|
+      accepted.status == "accepted"
+    end
   end
 
   def show
     @doggy_date = DoggyDate.find(params[:id])
-  endrails
+  end
+
+  def current_user?
+    if current_user.id == pd.match.matcher_id
+      "#{pd.match.matchee.first_name}"
+    else
+      "#{pd.match.matcher.first_name}"
+    end
+  end
 
   def new
     @match = Match.find(params[:match_id])
@@ -16,9 +30,8 @@ class DoggyDatesController < ApplicationController
     @match = Match.find(params[:match_id])
     @message = @match.messages.build(content: "Let's go on a date", user: current_user)
     @doggydate = DoggyDate.new(doggy_date_params)
-    @doggydate.booker = @match.matcher_id
-    @doggydate.bookee = @match.matchee_id
     @doggydate.message = @message
+    @doggydate.match = @match
     if @match.save
       redirect_to match_path(@match)
     else
