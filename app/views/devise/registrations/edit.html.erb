@@ -24,6 +24,7 @@
                 label: "Write an overview about you and your dogs",
                 required: false,
                 autofocus: true %>
+    <%= f.input :photo, as: :file %>
     <%= f.input :password,
                 hint: "Leave it blank if you don't want to change it",
                 required: false,
