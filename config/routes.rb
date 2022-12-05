@@ -16,9 +16,9 @@ Rails.application.routes.draw do
       get :my_matches
     end
     resources :messages, only: :create
-    resources :doggy_dates
+    resources :doggy_dates, exclude: [:index]
   end
-
+  resources :doggy_dates, only: [:index]
   get "matches", to: "profiles#matches", as: :matches
   resources :matches, only: %i[update]
   post "matches", to: "matches#create", as: :create_match

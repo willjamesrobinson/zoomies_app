@@ -2,7 +2,6 @@ class MatchesController < ApplicationController
   def my_matches
     @matches1 = Match.where(matchee_id: current_user.id).where(status: 2)
     @matches2 = Match.where(matcher_id: current_user.id).where(status: 2)
-
   end
 
   def destroy
