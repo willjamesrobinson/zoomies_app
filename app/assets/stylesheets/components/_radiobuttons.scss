@@ -1,0 +1,30 @@
+.settings-button {
+  position: absolute;
+  transform: scale(0);
+}
+
+.settings-button + label {
+  cursor: pointer;
+  border: solid darkgreen;
+  color: darkgreen;
+  background-color: orange;
+  border-radius: 16px;
+  padding: 5px;
+  width: 80px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.settings-button:checked + label {
+  color: orange;
+  background-color: darkgreen;
+}
+
+.tag-item {
+  display: inline-block;
+}
+
+#age_puppy + label {
+  width: 110px;
+  font-size: 12px;
+}
