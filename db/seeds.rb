@@ -14,6 +14,7 @@ Message.destroy_all
 Match.destroy_all
 User.destroy_all
 
+
 puts "Seeding started"
 
 bob = User.new(email: "seed_user_bob@ymail.com", password: "123456", age: 55, gender: "male", first_name: "Bob", overview: "#{Faker::Creature::Dog.meme_phrase}, #{Faker::Creature::Dog.sound}")

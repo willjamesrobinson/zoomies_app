@@ -54,6 +54,16 @@
       <p><iconify-icon icon="bi:gender-ambiguous"></iconify-icon><%= dog.gender.capitalize %></p>
       <p><iconify-icon icon="ph:ruler"></iconify-icon><%= dog.size.capitalize %></p>
       <p><iconify-icon icon="fa-solid:dog"></iconify-icon> <%= dog.breed.capitalize %></p>
+      <h3>🐕 <%= dog.name.capitalize %></h3>
+      <% if dog.photos.attached? %>
+        <% dog.photos.each do |photo| %>
+        <%raise%>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      <% else %>
+        <%= image_tag "dog.png", width: 500 %>
+      <% end %>
+      <p>Age: <%= dog.age %> years old</p>
 
       <% if dog.personality %>
         <p><i><% dog.personality.each do |trait| %>
