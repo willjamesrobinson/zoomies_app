@@ -1,5 +1,5 @@
-<div class="container mb-5" style="background-color:red;">
-  <h1>
+<div class="container py-5 mb-5" style="background-color:white;">
+  <h1 class="text-center">
     <% @user.dogs.each do |dog| %>
       <% if dog == @user.dogs.first %>
         <%= "#{dog.name.capitalize} " %>
@@ -8,9 +8,48 @@
       <% end %>
     <% end %>
   </h1>
-  <p>Overview: <%= @user.overview %></p>
-  <% @user.dogs.each do |dog| %>
-    <div class="mb-4">
+  <p class="text-center"><strong>Overview:</strong> <%= @user.overview %></p>
+
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <% @user.dogs.each_with_index do |dog, index| %>
+    <li class="nav-item" role="presentation">
+      <button class="<%= index == 0 ? "nav-link active" : "nav-link" %>" id="tab-<%=index%>" data-bs-toggle="tab" data-bs-target="#tab-<%=index%>-pane" type="button" role="tab" aria-controls="tab-<%=index%>-pane" aria-selected="<%= index == 0 ? "true" : "false" %>"><%= dog.name.capitalize %></button>
+    </li>
+  <% end %>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+  <% @user.dogs.each_with_index do |dog, index| %>
+    <div class="<%= index == 0 ? "tab-pane fade show active" : "tab-pane fade" %>" id="tab-<%=index%>-pane" role="tabpanel" aria-labelledby="tab-<%=index%>" tabindex="0">
+      <%# <% if dog.photos.attached?
+        <% dog.photos.each do |photo|
+          <%= cl_image_tag photo.key, class: "d-block w-100", crop: :fill
+        <% end
+      <% else
+        <%= image_tag "dog.png", width: 500
+      <% end  %>
+      <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <% if dog.photos.attached? %>
+            <% dog.photos.each_with_index do |photo, index| %>
+              <div class="<%= index == 0 ? "carousel-item active" : "carousel-item" %>">
+                <%= cl_image_tag photo.key, class: "d-block w-100", crop: :fill %>
+              </div>
+            <% end %>
+          <% else %>
+            <div class="carousel-item active">
+              <%= image_tag "dog.png", class: "d-block w-100" %>
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
       <h3><%= dog.name.capitalize %>, <%= dog.age %></h3>
       <p><iconify-icon icon="bi:gender-ambiguous"></iconify-icon><%= dog.gender.capitalize %></p>
       <p><iconify-icon icon="ph:ruler"></iconify-icon><%= dog.size.capitalize %></p>
@@ -18,12 +57,14 @@
       <h3>🐕 <%= dog.name.capitalize %></h3>
       <% if dog.photos.attached? %>
         <% dog.photos.each do |photo| %>
+        <%raise%>
           <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
         <% end %>
       <% else %>
         <%= image_tag "dog.png", width: 500 %>
       <% end %>
       <p>Age: <%= dog.age %> years old</p>
+
       <% if dog.personality %>
         <p><i><% dog.personality.each do |trait| %>
           <%= trait %>
@@ -38,17 +79,23 @@
       <% end %>
     </div>
   <% end %>
-  <div>
-
-    <h3>🧍 <%= @user.first_name.capitalize %>, <%= @user.age %></h3>
-
-    <% if @user.photo.attached? %>
-      <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
-    <% else %>
-        <%= image_tag "person.png", width: 500 %>
-    <% end %>
-    <p>Gender: <%= @user.gender.capitalize %></p>
   </div>
+
+  <div class="d-flex justify-content-center align-items-center border py-2">
+    <% if @user.photo.attached? %>
+      <%= cl_image_tag(@user.photo.key, :transformation=>[{:gravity=>"face", :height=>400, :width=>400, :crop=>"crop"}, {:radius=>"max"}, {:width=>70, :crop=>"scale"}]) %>
+    <% else %>
+      <%= image_tag "person.png", width: 70, class: "rounded-circle" %>
+    <% end %>
+    <h3 class="ps-3"><%= @user.first_name.capitalize %>, <%= @user.age %>
+    <% if @user.gender.downcase == "female" %>
+      <iconify-icon icon="material-symbols:female"></iconify-icon>
+    <% else %>
+      <iconify-icon icon="material-symbols:male"></iconify-icon>
+    <% end %>
+    </h3>
+  </div>
+
   <% if @user == current_user %>
     <button><%= link_to "Update your user profile 🧍", edit_user_registration_path %></button>
     <button><%= link_to "Add a dog 🐕", new_dog_path %></button>
