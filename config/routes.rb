@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   
   resources :doggy_dates, only: [:index]
   get "matches", to: "profiles#matches", as: :matches
+  get "settings", to: "profiles#settings", as: :settings
   resources :matches, only: %i[update]
   post "matches", to: "matches#create", as: :create_match
 

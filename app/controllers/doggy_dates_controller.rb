@@ -5,7 +5,7 @@ class DoggyDatesController < ApplicationController
 
   def show
     @doggy_date = DoggyDate.find(params[:id])
-  end
+  endrails
 
   def new
     @match = Match.find(params[:match_id])
