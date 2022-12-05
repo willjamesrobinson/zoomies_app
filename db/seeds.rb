@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-devrequire 'faker'
+require 'faker'
 
 puts "Delete messages, matches, users"
 

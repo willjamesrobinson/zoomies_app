@@ -1,13 +1,35 @@
-<h1>DoggyDates#index</h1>
-<p>Find me in app/views/doggy_dates/index.html.erb</p>
-<ul>
+<%# <h1>Doggy Dates</h1> %>
+<div class="container">
+<h1 style="text">Doggy Dates</h1>
   <% @pending_dates.each do |pd| %>
-    <li> <% if current_user.id == pd.match.matcher_id %>
-      <%= "#{pd.match.matchee.first_name}" %>
-    <% else %>
-      <%= "#{pd.match.matcher.first_name}" %>
-    <% end %>
-    <%= "#{pd.date}" %>
-    <%= "#{pd.location}" %>
-  <% end %> </li>
-</ul>
+    <div class="card doggy" style="width: 30rem; margin: 0 auto;">
+      <div class="row">
+        <div class="card-body col-9">
+          <h5 class="card-title" style="margin-left: 12px;">
+          <%if current_user.id == pd.match.matcher_id %>
+            <iconify-icon icon="fa-solid:dog"></iconify-icon> <%= "#{pd.match.matchee.first_name}" %>
+          <% else %>
+            <iconify-icon icon="fa-solid:dog"></iconify-icon> <%= "#{pd.match.matcher.first_name}" %>
+          <% end %></h5>
+          <h5 class="card-subtitle mb-2" style="margin-left: 12px;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="26" height="26" viewBox="0 0 24 24" stroke-width="1.2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-top:7px;  vertical-align:bottom; padding-right: 5px;">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+            <circle cx="18" cy="18" r="4" />
+            <path d="M15 3v4" />
+            <path d="M7 3v4" />
+            <path d="M3 11h16" />
+            <path d="M18 16.496v1.504l1 1" />
+          </svg><%= "#{pd.date}" %></h5>
+          <h5 class="card-text" style="margin-left: 12px; padding-right: 5px;"><iconify-icon icon="material-symbols:park" style="margin-right:5px;"></iconify-icon><%= "#{pd.location}" %></h5>
+        </div>
+        <div class="card-body col-3">
+          <ul style="list-style-type:none;">
+            <li><a href="#" class="card-link" style="position: absolute; right: 7px;top: 7px; color:black;"><iconify-icon icon="mdi:tick" width="32" height="32"></iconify-icon></a></li>
+            <li><a href="#" class="card-link" style="position: absolute; right: 9px;bottom: 7px; color:black;"><iconify-icon icon="icomoon-free:bin" width="26" height="26"></iconify-icon></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <%end%>
+</div>
