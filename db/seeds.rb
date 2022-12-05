@@ -9,7 +9,11 @@ require 'faker'
 
 puts "Delete users"
 
+DoggyDate.destroy_all
+Message.destroy_all
+Match.destroy_all
 User.destroy_all
+
 
 puts "Seeding started"
 

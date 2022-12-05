@@ -18,6 +18,7 @@
       <h3>🐕 <%= dog.name.capitalize %></h3>
       <% if dog.photos.attached? %>
         <% dog.photos.each do |photo| %>
+        <%raise%>
           <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
         <% end %>
       <% else %>

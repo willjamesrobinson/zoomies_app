@@ -28,22 +28,37 @@
   </div>
 
     <div class="tinder--cards">
-      <% if match.persisted? %>
-        <% match.matcher.dogs.each do |dog| %>
-          <div class="tinder--card">
-            <img src="https://placeimg.com/600/550/arch">
-            <div class="text" style="margin-top: -20px; margin-left:-80px;">
-              <p><%= "#{dog.name.capitalize}, #{dog.age}, #{dog.gender.capitalize}, #{dog.breed.capitalize}"  %></p>
-            </div>
-          </div>
-        <% end %>
+      <% match.matcher.dogs.each do |dog| %>
+        <div class="tinder--card">
+        <% if dog.photos.attached? %>
+          <%= cl_image_tag dog.photos.first.key, height: 400, width: 400, crop: :fill %>
         <% else %>
-        <% match.matchee.dogs.each do |dog| %>
-          <div class="tinder--card">
-            <img src="https://placeimg.com/600/550/arch">
-            <p>🐕 <%= "#{dog.name.capitalize}, #{dog.age}, #{dog.gender.capitalize}, #{dog.breed.capitalize}"  %></p>
+        <%= image_tag "dog.png", width: 500 %>
+        <% end %>
+          <div class="text" style="margin-top: 0px; margin-left:0px; text-align: left; padding:10px;">
+            <h2><%= "#{dog.name.capitalize}, #{dog.age}"%></h2>
           </div>
-        <% end%>
+          <ul style="text-align:left; margin-left:10px; text-align:left; padding-left:0px;">
+          <li style="list-style-type:none;"><iconify-icon icon="bi:gender-ambiguous"></iconify-icon><%=" #{dog.gender.capitalize}"%></li>
+          <li style="list-style-type:none;"><iconify-icon icon="fa6-solid:dog"></iconify-icon><%=" #{dog.breed.capitalize}"%></li>
+          </ul>
+        </div>
+      <% end %>
+      <% match.matchee.dogs.each do |dog| %>
+        <div class="tinder--card">
+        <% if dog.photos.attached? %>
+          <%= cl_image_tag dog.photos.first.key, height: 400, width: 400, crop: :fill %>
+        <% else %>
+        <%= image_tag "dog.png", width: 500 %>
+        <% end %>
+         <div class="text" style="margin-top: 0px; margin-left:0px; text-align: left; padding:10px;">
+            <h2><%= "#{dog.name.capitalize}, #{dog.age}"%></h2>
+          </div>
+          <ul style="text-align:left; margin-left:10px; text-align:left; padding-left:0px;">
+          <li style="list-style-type:none;"><iconify-icon icon="bi:gender-ambiguous"></iconify-icon><%="#{dog.gender.capitalize}"%></li>
+          <li style="list-style-type:none;"><iconify-icon icon="fa6-solid:dog"></iconify-icon><%="#{dog.breed.capitalize}"%></li>
+          </ul>
+        </div>
       <% end%>
 
     <div class="tinder--card">
