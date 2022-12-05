@@ -43,12 +43,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_04_224434) do
   end
 
   create_table "doggy_dates", force: :cascade do |t|
-    t.date "date"
     t.string "location"
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "message_id"
+    t.date "date"
     t.index ["message_id"], name: "index_doggy_dates_on_message_id"
   end
 

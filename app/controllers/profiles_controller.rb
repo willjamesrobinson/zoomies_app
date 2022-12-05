@@ -35,4 +35,20 @@ class ProfilesController < ApplicationController
     # Mix the two arrays together
     @matches = (prematches + potential_matches).shuffle
   end
+
+  def settings
+    @dogs = Dog.where(nil)
+    @dogs = @dogs.filter_by_location(params[:location]) if params[:location].present?
+    @dogs = @dogs.filter_by_gender(params[:gender]) if params[:gender].present?
+    @dogs = @dogs.filter_by_age(params[:age]) if params[:age].present?
+    @dogs = @dogs.filter_by_size(params[:size]) if params[:size].present?
+    @dogs = @dogs.filter_by_personality(params[:personailty]) if params[:personality].present?
+  end
+
+  private
+
+  def filtering_params(params)
+    params.slice(:location, :gender, :age, :size, :personality)
+  end
+
 end
