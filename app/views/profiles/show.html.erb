@@ -12,6 +12,13 @@
   <% @user.dogs.each do |dog| %>
     <div class="mb-4">
       <h3>🐕 <%= dog.name.capitalize %></h3>
+      <% if dog.photos.attached? %>
+        <% dog.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      <% else %>
+        <%= image_tag "dog.png", width: 500 %>
+      <% end %>
       <p>Age: <%= dog.age %> years old</p>
       <p>Gender: <%= dog.gender.capitalize %></p>
       <p>Size: <%= dog.size.capitalize %></p>
@@ -32,6 +39,11 @@
   <% end %>
   <div>
     <h3>🧍 <%= @user.first_name.capitalize %></h3>
+    <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+    <% else %>
+        <%= image_tag "person.png", width: 500 %>
+      <% end %>
     <p>Age: <%= @user.age %> years old</p>
     <p>Gender: <%= @user.gender.capitalize %></p>
   </div>

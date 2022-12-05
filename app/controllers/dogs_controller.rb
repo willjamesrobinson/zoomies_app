@@ -33,11 +33,7 @@ class DogsController < ApplicationController
   private
 
   def dog_params
-    params.require(:dog).permit(:name, :age, :size, :gender, :breed, personality: [], img: [])
-  end
-
-  def dog_params_no_img
-    params.require(:dog).permit(:name, :age, :size, :gender, :breed, :personality)
+    params.require(:dog).permit(:name, :age, :size, :gender, :breed, personality: [], photos: [])
   end
 
   def set_dog
