@@ -1,5 +1,5 @@
-<div class="container mb-5">
-  <h1>Meet
+<div class="container mb-5" style="background-color:red;">
+  <h1>
     <% @user.dogs.each do |dog| %>
       <% if dog == @user.dogs.first %>
         <%= "#{dog.name.capitalize} " %>
@@ -11,6 +11,10 @@
   <p>Overview: <%= @user.overview %></p>
   <% @user.dogs.each do |dog| %>
     <div class="mb-4">
+      <h3><%= dog.name.capitalize %>, <%= dog.age %></h3>
+      <p><iconify-icon icon="bi:gender-ambiguous"></iconify-icon><%= dog.gender.capitalize %></p>
+      <p><iconify-icon icon="ph:ruler"></iconify-icon><%= dog.size.capitalize %></p>
+      <p><iconify-icon icon="fa-solid:dog"></iconify-icon> <%= dog.breed.capitalize %></p>
       <h3>🐕 <%= dog.name.capitalize %></h3>
       <% if dog.photos.attached? %>
         <% dog.photos.each do |photo| %>
@@ -20,9 +24,6 @@
         <%= image_tag "dog.png", width: 500 %>
       <% end %>
       <p>Age: <%= dog.age %> years old</p>
-      <p>Gender: <%= dog.gender.capitalize %></p>
-      <p>Size: <%= dog.size.capitalize %></p>
-      <p>Breed: <%= dog.breed.capitalize %></p>
       <% if dog.personality %>
         <p><i><% dog.personality.each do |trait| %>
           <%= trait %>
@@ -38,13 +39,14 @@
     </div>
   <% end %>
   <div>
-    <h3>🧍 <%= @user.first_name.capitalize %></h3>
+
+    <h3>🧍 <%= @user.first_name.capitalize %>, <%= @user.age %></h3>
+
     <% if @user.photo.attached? %>
       <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
     <% else %>
         <%= image_tag "person.png", width: 500 %>
-      <% end %>
-    <p>Age: <%= @user.age %> years old</p>
+    <% end %>
     <p>Gender: <%= @user.gender.capitalize %></p>
   </div>
   <% if @user == current_user %>
