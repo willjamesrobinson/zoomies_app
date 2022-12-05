@@ -14,13 +14,14 @@ Message.destroy_all
 Match.destroy_all
 User.destroy_all
 
+
 puts "Seeding started"
 
 bob = User.new(email: "seed_user_bob@ymail.com", password: "123456", age: 55, gender: "male", first_name: "Bob", overview: "#{Faker::Creature::Dog.meme_phrase}, #{Faker::Creature::Dog.sound}")
 file = URI.open("https://images.unsplash.com/photo-1590074251929-76f7c465a3bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80")
 bob.photo.attach(io: file, filename: "#{bob.first_name}.jpg", content_type: "image/jpg")
 print "Bob... "
-betty = User.new(email: "seed_user_betty@ymail.com", password: "654321", age: 44, gender: "female", first_name: "Betty", overview: "#{Faker::Creature::Dog.meme_phrase}, #{Faker::Creature::Dog.sound}")
+betty = User.new(email: "seed_user_betty@ymail.com", password: "654321", age: 44, gender: "female", first_name: "Betty", overview: "Fluff and Fuzz are my cute little angels who like gentle walks and cuddles. They are looking for some small dog friends.")
 file = URI.open("https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
 betty.photo.attach(io: file, filename: "#{betty.first_name}.jpg", content_type: "image/jpg")
 print "Betty... "

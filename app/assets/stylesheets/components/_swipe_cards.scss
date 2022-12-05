@@ -69,7 +69,7 @@
   display: inline-block;
   width: 90vw;
   max-width: 400px;
-  height: 55vh;
+  height: 70vh;
   background: #FFFFFF;
   padding-bottom: 40px;
   border-radius: 8px;
@@ -139,4 +139,11 @@
 
 .fa-remove {
   color: #CDD6DD;
+}
+
+.text ul {
+  list-style-type: none;
+  text-align: left;
+  margin-left: 10px;
+  text-decoration: none;
 }
