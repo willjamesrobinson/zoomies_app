@@ -7,8 +7,11 @@
 #   Character.create(name: "Luke", movie: movies.first)
 require 'faker'
 
-puts "Delete users"
+puts "Delete messages, matches, users"
 
+DoggyDate.destroy_all
+Message.destroy_all
+Match.destroy_all
 User.destroy_all
 
 puts "Seeding started"

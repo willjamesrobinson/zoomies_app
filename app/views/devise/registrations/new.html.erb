@@ -14,6 +14,14 @@
       <%= f.input :gender, collection: User::GENDER,
                   required: true,
                   autofocus: true %>
+      <%= f.input :overview,
+                  label: "Write an overview about you and your dogs",
+                  required: false,
+                  autofocus: true %>
+      <%= f.input :photo,
+                  as: :file,
+                  label: "Your (🧍) photo",
+                  required: false %>
       <%= f.input :email,
                   required: true,
                   autofocus: true,
