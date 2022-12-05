@@ -3,8 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  has_many :matches, foreign_key: 'matcher_id', class_name: 'Match', dependent: :destroy
-  has_many :matches, foreign_key: 'matchee_id', class_name: 'Match', dependent: :destroy
+  has_many :matches, foreign_key: 'matcher_id', dependent: :destroy
+  has_many :matches, foreign_key: 'matchee_id', dependent: :destroy
   has_many :dogs, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_one_attached :photo
