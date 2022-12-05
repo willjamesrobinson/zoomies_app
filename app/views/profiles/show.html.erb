@@ -1,4 +1,4 @@
-<div class="container pb-5">
+<div class="container mb-5" style="background-color:red;">
   <h1>
     <% @user.dogs.each do |dog| %>
       <% if dog == @user.dogs.first %>
@@ -8,18 +8,49 @@
       <% end %>
     <% end %>
   </h1>
+  <p>Overview: <%= @user.overview %></p>
   <% @user.dogs.each do |dog| %>
-    <div>
-      <h3><%= dog.name.capitalize %></h3>
-      <p><%= dog.age %> years old</p>
-      <p><%= dog.gender.capitalize %></p>
-      <p><%= dog.size.capitalize %></p>
-      <p><%= dog.breed.capitalize %></p>
+    <div class="mb-4">
+      <h3><%= dog.name.capitalize %>, <%= dog.age %></h3>
+      <p><iconify-icon icon="bi:gender-ambiguous"></iconify-icon><%= dog.gender.capitalize %></p>
+      <p><iconify-icon icon="ph:ruler"></iconify-icon><%= dog.size.capitalize %></p>
+      <p><iconify-icon icon="fa-solid:dog"></iconify-icon> <%= dog.breed.capitalize %></p>
+      <h3>🐕 <%= dog.name.capitalize %></h3>
+      <% if dog.photos.attached? %>
+        <% dog.photos.each do |photo| %>
+          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
+      <% else %>
+        <%= image_tag "dog.png", width: 500 %>
+      <% end %>
+      <p>Age: <%= dog.age %> years old</p>
+      <% if dog.personality %>
+        <p><i><% dog.personality.each do |trait| %>
+          <%= trait %>
+        <% end %></i></p>
+      <% end %>
+      <% if @user == current_user %>
+        <button><%= link_to "Edit 🐕", edit_dog_path(dog) %></button>
+        <button><%= link_to "Delete 🐕",
+              dog_path(dog),
+              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+        %></button>
+      <% end %>
     </div>
   <% end %>
   <div>
-    <h3><%= @user.first_name.capitalize %></h3>
-    <p><%= @user.age %> years old</p>
-    <p><%= @user.gender.capitalize %></p>
+
+    <h3>🧍 <%= @user.first_name.capitalize %>, <%= @user.age %></h3>
+
+    <% if @user.photo.attached? %>
+      <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill %>
+    <% else %>
+        <%= image_tag "person.png", width: 500 %>
+    <% end %>
+    <p>Gender: <%= @user.gender.capitalize %></p>
   </div>
+  <% if @user == current_user %>
+    <button><%= link_to "Update your user profile 🧍", edit_user_registration_path %></button>
+    <button><%= link_to "Add a dog 🐕", new_dog_path %></button>
+  <% end %>
 </div>

@@ -1,11 +1,4 @@
-<div class="container">
-<%= simple_form_for(@dog) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :age %>
-  <%= f.input :gender , collection: Dog::GENDER %>
-  <%= f.input :size, collection: Dog::SIZE %>
-  <%= f.input :breed %>
-  <%= f.input :personality, multiple: true, class: 'multiselectuser' ,  collection: Dog::PERSONALITY %>
-  <%= f.submit %>
-<% end %>
+<div class="container mb-5">
+  <h1>Add New Dog</h1>
+  <%= render "dog_form", dog: @dog %>
 </div>

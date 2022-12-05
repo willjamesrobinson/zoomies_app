@@ -1,9 +1,4 @@
-<%= simple_form_for(@dog) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :age %>
-  <%= f.input :gender, collection: Dog::GENDER %>
-  <%= f.input :size, collection: Dog::SIZE %>
-  <%= f.input :breed %>
-  <%= f.input :personality %>
-  <%= f.submit %>
-<% end %>
+<div class="container mb-5">
+  <h1>Update <%= @dog.name %>'s Details</h1>
+  <%= render "dog_form", dog: @dog %>
+</div>

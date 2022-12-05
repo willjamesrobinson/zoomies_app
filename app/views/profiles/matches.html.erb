@@ -1,11 +1,17 @@
-<%# Shows pending matches %>
-
-<%= turbo_stream_from "user_#{current_user.id}_pending_matches" %>
-<div id="pending_matches">
-  <ul>
-  <% @matches.each do |match| %>
-  <%= render match %>
+<div class="container mb-5">
+  <h1>Find a Match</h1>
+  <%# Can only start swiping if has dog %>
+  <% if current_user.dogs.empty? %>
+    <p><strong>Add your dog(s) to your <%= link_to "profile", show_profile_path(current_user.id) %> before you look for matches!</strong></p>
+  <% else %>
+  <%# Shows pending matches %>
+  <%= turbo_stream_from "user_#{current_user.id}_pending_matches" %>
+  <div id="pending_matches">
+    <% @matches.each do |match| %>
+    <%= render match %>
+    <% end %>
+  </div>
   <% end %>
-  </ul>
 </div>
+
 <%# <div id="<%= dom_id(current_user, :matches) "></div> %>
