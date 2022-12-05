@@ -1,13 +1,11 @@
 class DoggyDatesController < ApplicationController
   def index
-    @doggy_dates = DoggyDate.all
-    # where(@message.user == current_user)
-      # || @message.match.matchee_id == current_user.id)
+    @doggy_dates = DoggyDate.where(booker: current_user.id).or(DoggyDate.where(bookee: current_user.id))
   end
 
   def show
     @doggy_date = DoggyDate.find(params[:id])
-  end
+  endrails
 
   def new
     @match = Match.find(params[:match_id])
@@ -18,6 +16,8 @@ class DoggyDatesController < ApplicationController
     @match = Match.find(params[:match_id])
     @message = @match.messages.build(content: "Let's go on a date", user: current_user)
     @doggydate = DoggyDate.new(doggy_date_params)
+    @doggydate.booker = @match.matcher_id
+    @doggydate.bookee = @match.matchee_id
     @doggydate.message = @message
     if @match.save
       redirect_to match_path(@match)
@@ -28,7 +28,6 @@ class DoggyDatesController < ApplicationController
 
   def update
     # Save
-    raise
     @doggy_date = DoggyDate.find(params[:id])
     if @doggy_date.update(doggy_date_params)
       redirect_to root_path, status: :see_other
