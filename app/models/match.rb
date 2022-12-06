@@ -4,6 +4,7 @@ class Match < ApplicationRecord
   belongs_to :matchee, class_name: "User", foreign_key: 'matchee_id'
   has_many :messages, dependent: :destroy
   has_many :doggy_dates, dependent: :destroy
+  has_many :dogs, through: :matcher
 
   validates_uniqueness_of :matchee_id, { scope: :matcher_id }
   validates :matchee_id, comparison: { other_than: :matcher_id }

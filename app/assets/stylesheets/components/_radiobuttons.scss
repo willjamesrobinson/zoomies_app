@@ -13,6 +13,7 @@
   width: 80px;
   text-align: center;
   font-size: 12px;
+  margin: 5px;
 }
 
 .settings-button:checked + label {
@@ -22,9 +23,4 @@
 
 .tag-item {
   display: inline-block;
-}
-
-#age_puppy + label {
-  width: 110px;
-  font-size: 12px;
 }
