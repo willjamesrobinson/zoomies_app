@@ -16,11 +16,18 @@ Rails.application.routes.draw do
       get :my_matches
     end
 
+
     resources :messages, only: :create
     resources :doggy_dates, exclude: [:index, :destroy]
   end
 
   resources :doggy_dates, only: [:index, :destroy]
+  resources :notifications, only: [] do
+    collection do
+      post :mark_as_read
+    end
+  end
+
   get "matches", to: "profiles#matches", as: :matches
   get "settings", to: "profiles#settings", as: :settings
   resources :matches, only: %i[update]
