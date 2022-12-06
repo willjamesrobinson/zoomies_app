@@ -14,13 +14,13 @@ Rails.application.routes.draw do
   resources :matches, only: [:update, :show] do
     collection do
       get :my_matches
-  end
-    
+    end
+
     resources :messages, only: :create
-    resources :doggy_dates, exclude: [:index]
+    resources :doggy_dates, exclude: [:index, :destroy]
   end
-  
-  resources :doggy_dates, only: [:index]
+
+  resources :doggy_dates, only: [:index, :destroy]
   get "matches", to: "profiles#matches", as: :matches
   get "settings", to: "profiles#settings", as: :settings
   resources :matches, only: %i[update]

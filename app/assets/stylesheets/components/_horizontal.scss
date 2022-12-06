@@ -1,0 +1,26 @@
+.wrapper{
+  display: flex;
+  overflow-x: auto;
+}
+
+.wrapper::-webkit-scrollbar{
+  width:0;
+}
+
+.wrapper .item {
+  min-width: 70px;
+  text-align: center;
+  margin-right:2px;
+  overflow: hidden;
+  background: white;
+  padding: 20px;
+}
+
+.wrapper .item img {
+  border-radius: 50%;
+}
+
+.wrapper .item a {
+  color: black;
+  text-decoration: none;
+}

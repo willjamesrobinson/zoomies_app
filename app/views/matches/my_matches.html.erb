@@ -1,20 +1,37 @@
-<div class="container mb-5">
+<div class="container" style="margin-bottom:200px;">
   <%= turbo_stream_from dom_id(current_user, :matches) %>
-  <h1>My Matches</h1>
-  <ul><% @matches1.each do |match| %>
-  <li> See <% match.matcher.dogs.each do |dog| %>
-  <%= dog.name %> (🐕)
-  <% end %>
-  & <%= match.matcher.first_name %>'s (🧍) <%= link_to "profile", show_profile_path(match.matcher) %> or have a <%= link_to "chat", match_path(match) %> 💬</li>
+  <h1 style="text-align:center;">Matches</h1>
 
-  <% end %>
-  <% @matches2.each do |match| %>
-  <li> See <% match.matchee.dogs.each do |dog| %>
-  <%= dog.name %> (🐕)
-  <% end %>
-  & <%= match.matchee.first_name %>'s (🧍) <%= link_to "profile", show_profile_path(match.matchee) %> or have a <%= link_to "chat", match_path(match) %> 💬</li>
+    <div class="wrapper" style="margin-top: 16px;">
+      <% @matches1.each do |match| %>
+      <% match.matcher.dogs.each do |dog| %>
+        <%=link_to match_path(match) do %>
+        <div class="item" style="margin-right:15px;">
+          <%=cl_image_tag dog.photos.first.key, height: 70, width: 70, crop: :fill%>
+        <%=dog.name%>
+        </div>
+        <% end %>
+      <% end %>
+      <% end %>
+      <% @matches2.each do |match| %>
+      <% match.matchee.dogs.each do |dog| %>
+      <%=link_to match_path(match) do %>
+        <div class="item" style="margin-right:15px;">
+          <%=cl_image_tag dog.photos.first.key, height: 70, width: 70, crop: :fill%>
+        <%= dog.name%>
+        </div>
+        <% end %>
+      <% end %>
+      <% end %>
+      <div class="item">box 1</div>
+      <div class="item">box 1</div>
+      <div class="item">box 1</div>
+      <div class="item">box 1</div>
+      <div class="item">box 1</div>
+      <div class="item">box 1</div>
+      <div class="item">box 1</div>
+      <div class="item">box 1</div>
+    </div>
 
-  <% end %>
-  </ul>
+    <%= render "matches/chat_cards"%>
 </div>
-<div id="<%= dom_id(current_user, :matches) %>"></div>
