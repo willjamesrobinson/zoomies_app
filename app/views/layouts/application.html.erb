@@ -43,6 +43,7 @@
     <%= render "shared/flashes" %>
 
     <%= yield %>
+    <div class="py-5 my-3"> </div>
 
     <div class="container-fluid fixed-bottom">
       <div class = "grass text-center justify-content-center flex-wrap" style ="">
@@ -66,7 +67,7 @@
               <%= image_tag("noun-dog-house-3212489.svg", width: "56px") %>
               <% end %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" id="matches-messages">
               <%= link_to my_matches_matches_path, class: "nav-link" do %>
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-circle" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-top:7px;">
               <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
@@ -75,6 +76,9 @@
               <line x1="8" y1="12" x2="8" y2="12.01" />
               <line x1="16" y1="12" x2="16" y2="12.01" />
               </svg>
+              <% end %>
+              <% if user_signed_in? %>
+              <%= image_tag("green-dot.png", width: "22px", id: "green-dot") %>
               <% end %>
             </li>
             <li class="nav-item">

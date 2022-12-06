@@ -15,11 +15,17 @@ Rails.application.routes.draw do
     collection do
       get :my_matches
   end
-    
+
     resources :messages, only: :create
     resources :doggy_dates, exclude: [:index]
   end
-  
+
+  resources :notifications, only: [] do
+    collection do
+      post :mark_as_read
+    end
+  end
+
   resources :doggy_dates, only: [:index]
   get "matches", to: "profiles#matches", as: :matches
   get "settings", to: "profiles#settings", as: :settings
