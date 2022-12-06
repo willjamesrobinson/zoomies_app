@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :dogs, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_one_attached :photo
+  has_many :notifications, foreign_key: :recipient_id
   GENDER = ["Male", "Female"]
   validates :first_name, :age, :gender, presence: true
   validates :first_name, length: { minimum: 3 }
