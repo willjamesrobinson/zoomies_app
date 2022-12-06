@@ -13,6 +13,6 @@ class User < ApplicationRecord
   validates :first_name, length: { minimum: 3 }
   validates_numericality_of :age, only_integer: true
   has_many :doggy_dates, through: :matches
-  # reverse_geocoded_by :address
-  # after_validation :geocode
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
