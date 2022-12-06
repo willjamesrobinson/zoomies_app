@@ -5,7 +5,8 @@ import "bootstrap"
 import { initSwipeCards } from "./components/tinder"
 
 document.addEventListener("turbo:load", () => {
-  initSwipeCards()
+  const tinder = document.querySelector('.tinder');
+  tinder && initSwipeCards(); // fancy if statement
 })
 
 // $(function() {
