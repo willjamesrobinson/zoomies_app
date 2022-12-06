@@ -24,6 +24,17 @@ class DoggyDatesController < ApplicationController
   def new
     @match = Match.find(params[:match_id])
     @doggy_date = DoggyDate.new
+    get_park = "https://api.mapbox.com/geocoding/v5/mapbox.places/park.json?type=poi&proximity=#{current_user.latitude},#{current_user.longitude}&access_token=#{MAPBOX_API_KEY}"
+    get_park_parsed = JSON.parse(get_park)
+    features = get_park_parsed["features"]
+    # for loop needed in page to grab co-ordinates
+    for i in (1..5)
+      park = features[i-1]
+      name = park["text"]
+      coord = park.dig "geometry", "coordinates"
+      lat = coord[0]
+      long = coord[1]
+    end
   end
 
   def create

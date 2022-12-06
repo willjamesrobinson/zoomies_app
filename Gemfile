@@ -48,6 +48,9 @@ gem "sassc-rails"
 # Cloudinary
 gem "cloudinary"
 
+# Http Gem
+gem "http"
+
 # Bootstrap
 gem 'bootstrap', '~> 5.2.3'
 
