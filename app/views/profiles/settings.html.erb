@@ -1,67 +1,64 @@
-<h1>Settings</h1>
+<h5>Swiping Preferences</h5>
 
-<h2>Distance from me:</h2>
+<h6>Distance from me:</h6>
 
 
 <div>
-<form action="/matches">
-  <ul>
-    <li>
-    <h2>Age</h2>
-        <div class="tag-item">
-          <input class="settings-button" id="age_puppy" name="age" type="checkbox" value="puppy" />
-          <label for="age_puppy">4-12 months</label>
-          <input class="settings-button" id="age_young" name="age" type="checkbox" value="young" />
-          <label for="age_young">1-3 years</label>
-          <input class="settings-button" id="age_mid" name="age" type="checkbox" value="mid" />
-          <label for="age_mid">4-9 years</label>
-          <input class="settings-button" id="age_senior" name="age" type="checkbox" value="senior" />
-          <label for="age_senior">10+ years</label>
-        </div>
-    </li>
-    <li>
-      <h2>Gender</h2>
-        <div class="tag-item">
-          <input class="settings-button" id="gender_male" name="gender" type="checkbox" value="male" />
-          <label for="gender_male">Male</label>
-          <input class="settings-button" id="gender_female" name="gender" type="checkbox" value="female" />
-          <label for="gender_female">Female</label>
-        </div>
-    </li>
-    <li>
-      <h2>Size</h2>
-        <div class="tag-item">
-          <input class="settings-button" id="size_small" name="size" type="checkbox" value="small" />
-          <label for="size_small">Small</label>
-          <input class="settings-button" id="size_medium" name="size" type="checkbox" value="medium" />
-          <label for="size_medium">Medium</label>
-          <input class="settings-button" id="size_large" name="size" type="checkbox" value="large" />
-          <label for="size_large">Large</label>
-          <input class="settings-button" id="size_horse" name="size" type="checkbox" value="horse" />
-          <label for="size_horse">Horse</label>
-        </div>
-    </li>
-    <li>
-      <h2>Personality</h2>
-        <div class="tag-item">
-          <input class="settings-button" id="personality_slow" name="personality" type="checkbox" value="slow" />
-          <label for="personality_slow">Slow</label>
-          <input class="settings-button" id="personality_fast" name="personality" type="checkbox" value="fast" />
-          <label for="personality_fast">Fast</label>
-          <input class="settings-button" id="personality_playful" name="personality" type="checkbox" value="playful" />
-          <label for="personality_playful">Playful</label>
-          <input class="settings-button" id="personality_rough" name="personality" type="checkbox" value="rough" />
-          <label for="personality_rough">Rough</label>
-          <input class="settings-button" id="personality_quiet" name="personality" type="checkbox" value="quiet" />
-          <label for="personality_quiet">Quiet</label>
-          <input class="settings-button" id="personality_energetic" name="personality" type="checkbox" value="energetic" />
-          <label for="personality_energetic">Energetic</label>
-    </li>
-  </ul>
-  <input type="submit" value="Submit">
+  <form action="/matches" method="get">
+    <ul>
+      <li>
+      <h6>Age</h6>
+          <div class="tag-item">
+            <input class="settings-button" id="age_puppy" name="age" type="checkbox" value="puppy" />
+            <label for="age_puppy">Puppy</label>
+            <input class="settings-button" id="age_adult" name="age" type="checkbox" value="adult" />
+            <label for="age_adult">Adult</label>
+            <input class="settings-button" id="age_senior" name="age" type="checkbox" value="senior" />
+            <label for="age_senior">Senior</label>
+          </div>
+      </li>
+      <li>
+        <h6>Gender</h6>
+          <div class="tag-item">
+            <input class="settings-button" id="gender_female" name="gender" type="checkbox" value="female" />
+            <label for="gender_female">Female</label>
+            <input class="settings-button" id="gender_male" name="gender" type="checkbox" value="male" />
+            <label for="gender_male">Male</label>
+          </div>
+      </li>
+      <li>
+        <h6>Size</h6>
+          <div class="tag-item">
+            <input class="settings-button" id="size_small" name="size" type="checkbox" value="small" />
+            <label for="size_small">Small</label>
+            <input class="settings-button" id="size_medium" name="size" type="checkbox" value="medium" />
+            <label for="size_medium">Medium</label>
+            <input class="settings-button" id="size_large" name="size" type="checkbox" value="large" />
+            <label for="size_large">Large</label>
+          </div>
+      </li>
+      <li>
+        <h6>Personality</h6>
+          <div class="tag-item">
+            <input class="settings-button" id="personality_slow" name="personality" type="checkbox" value="slow" />
+            <label for="personality_slow">Slow</label>
+            <input class="settings-button" id="personality_shy" name="personality" type="checkbox" value="shy" />
+            <label for="personality_shy">Shy</label>
+            <input class="settings-button" id="personality_friendly" name="personality" type="checkbox" value="friendly" />
+            <label for="personality_friendly">Friendly</label>
+            <input class="settings-button" id="personality_rough" name="personality" type="checkbox" value="rough" />
+            <label for="personality_rough">Rough</label>
+            <input class="settings-button" id="personality_independent" name="personality" type="checkbox" value="independent" />
+            <label for="personality_independent">Independent</label>
+            <input class="settings-button" id="personality_energetic" name="personality" type="checkbox" value="energetic" />
+            <label for="personality_energetic">Energetic</label>
+      </li>
+    </ul>
+    <input type="submit" value="Submit">
   </form>
-  <button>Reset/Clear</button>
 </div>
+
+<button>Reset/Clear</button>
 
 <button><h3>Log Out</h3></button>
 
