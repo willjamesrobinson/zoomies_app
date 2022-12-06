@@ -1,5 +1,5 @@
-<div class="container py-5 mb-5" style="background-color:white;">
-  <h1 class="text-center">
+<div class="container pb-5 pt-3 mb-5" style="background-color:white;">
+  <h1 class="text-center fw-semibold text-dark">
     <% @user.dogs.each do |dog| %>
       <% if dog == @user.dogs.first %>
         <%= "#{dog.name.capitalize} " %>
@@ -7,9 +7,10 @@
         <%= "+ #{dog.name.capitalize}" %>
       <% end %>
     <% end %>
+    <small class="fw-light fst-italic"> owned by <%= @user.first_name %></small>
   </h1>
   <p class="text-center"><strong>Overview:</strong> <%= @user.overview %></p>
-
+  <%# Dog Tabs %>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
   <% @user.dogs.each_with_index do |dog, index| %>
     <li class="nav-item" role="presentation">
@@ -17,27 +18,22 @@
     </li>
   <% end %>
   </ul>
-  <div class="tab-content" id="myTabContent">
+  <%# Dog Tabs Content %>
+  <div class="tab-content border mb-2 pb-2" id="myTabContent">
   <% @user.dogs.each_with_index do |dog, index| %>
     <div class="<%= index == 0 ? "tab-pane fade show active" : "tab-pane fade" %>" id="tab-<%=index%>-pane" role="tabpanel" aria-labelledby="tab-<%=index%>" tabindex="0">
-      <%# <% if dog.photos.attached?
-        <% dog.photos.each do |photo|
-          <%= cl_image_tag photo.key, class: "d-block w-100", crop: :fill
-        <% end
-      <% else
-        <%= image_tag "dog.png", width: 500
-      <% end  %>
+      <%# Dog Image Carousel %>
       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
           <% if dog.photos.attached? %>
             <% dog.photos.each_with_index do |photo, index| %>
               <div class="<%= index == 0 ? "carousel-item active" : "carousel-item" %>">
-                <%= cl_image_tag photo.key, class: "d-block w-100", crop: :fill %>
+                <%= cl_image_tag photo.key, class: "d-block w-100", height: 400, width: 400, crop: :fill %>
               </div>
             <% end %>
           <% else %>
             <div class="carousel-item active">
-              <%= image_tag "dog.png", class: "d-block w-100" %>
+              <%= image_tag "dog.png", class: "d-block w-100"%>
             </div>
           <% end %>
         </div>
@@ -50,37 +46,45 @@
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-      <h3><%= dog.name.capitalize %>, <%= dog.age %></h3>
-      <p><iconify-icon icon="bi:gender-ambiguous"></iconify-icon><%= dog.gender.capitalize %></p>
-      <p><iconify-icon icon="ph:ruler"></iconify-icon><%= dog.size.capitalize %></p>
-      <p><iconify-icon icon="fa-solid:dog"></iconify-icon> <%= dog.breed.capitalize %></p>
-      <h3>🐕 <%= dog.name.capitalize %></h3>
-      <% if dog.photos.attached? %>
-        <% dog.photos.each do |photo| %>
-          <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-        <% end %>
-      <% else %>
-        <%= image_tag "dog.png", width: 500 %>
-      <% end %>
-      <p>Age: <%= dog.age %> years old</p>
-
-      <% if dog.personality %>
-        <p><i><% dog.personality.each do |trait| %>
-          <%= trait %>
-        <% end %></i></p>
-      <% end %>
+      <%# Dog Details %>
+      <div class="row p-2">
+        <div class="col">
+          <h3 class="py-1" ><%= dog.name.capitalize %>, <%= dog.age %>
+          <% if dog.gender.downcase == "female" %>
+            <iconify-icon icon="material-symbols:female"></iconify-icon>
+          <% else %>
+            <iconify-icon icon="material-symbols:male"></iconify-icon>
+          <% end %>
+          </h3>
+          <p><iconify-icon icon="ph:ruler"></iconify-icon> <%= dog.size.capitalize %></p>
+          <p><iconify-icon icon="fa-solid:dog"></iconify-icon> <%= dog.breed.capitalize %></p>
+        </div>
+        <div class="col d-flex justify-content-center align-items-center flex-wrap">
+          <% if dog.personality %>
+            <% dog.personality.each do |trait| %>
+              <% if trait != "" %>
+                <p class="btn btn-light m-1"><i><%= trait %></i></p>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
       <% if @user == current_user %>
-        <button><%= link_to "Edit 🐕", edit_dog_path(dog) %></button>
-        <button><%= link_to "Delete 🐕",
-              dog_path(dog),
-              data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary text-white mx-1"><%= link_to "Edit #{dog.name.split.first.capitalize}", edit_dog_path(dog), class: "text-decoration-none text-reset" %></button>
+        <button type="button" class="btn btn-primary text-white mx-1"><%= link_to "Delete #{dog.name.split.first.capitalize}",
+                    dog_path(dog),
+                    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"},
+                    class: "text-decoration-none text-reset"
         %></button>
+      </div>
       <% end %>
     </div>
   <% end %>
   </div>
-
-  <div class="d-flex justify-content-center align-items-center border py-2">
+  <%# Owner Details %>
+  <div class="border p-2">
+  <div class="d-flex justify-content-center align-items-center">
     <% if @user.photo.attached? %>
       <%= cl_image_tag(@user.photo.key, :transformation=>[{:gravity=>"face", :height=>400, :width=>400, :crop=>"crop"}, {:radius=>"max"}, {:width=>70, :crop=>"scale"}]) %>
     <% else %>
@@ -94,9 +98,11 @@
     <% end %>
     </h3>
   </div>
-
   <% if @user == current_user %>
-    <button><%= link_to "Update your user profile 🧍", edit_user_registration_path %></button>
-    <button><%= link_to "Add a dog 🐕", new_dog_path %></button>
+  <div class="d-flex justify-content-center mt-2">
+    <button type="button" class="btn btn-primary text-white mx-1"><%= link_to "Update your profile", edit_user_registration_path, class: "text-decoration-none text-reset" %></button>
+    <button type="button" class="btn btn-primary text-white mx-1"><%= link_to "Add a dog", new_dog_path, class: "text-decoration-none text-reset" %></button>
+  </div>
   <% end %>
+  </div>
 </div>

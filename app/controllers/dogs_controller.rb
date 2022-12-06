@@ -20,7 +20,12 @@ class DogsController < ApplicationController
 
   def update
     @dog = Dog.find(params[:id])
-    @dog.update(dog_params)
+    @dog.update(dog_params_no_img)
+    if params[:dog][:photos] != [""]
+      params[:dog][:photos].each do |photo|
+        @dog.photos.attach(photo)
+      end
+    end
     redirect_to show_profile_path(@dog.user)
   end
 
@@ -34,6 +39,10 @@ class DogsController < ApplicationController
 
   def dog_params
     params.require(:dog).permit(:name, :age, :size, :gender, :breed, personality: [], photos: [])
+  end
+
+  def dog_params_no_img
+    params.require(:dog).permit(:name, :age, :size, :gender, :breed, personality: [])
   end
 
   def set_dog
