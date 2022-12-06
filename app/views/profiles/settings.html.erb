@@ -1,18 +1,66 @@
-<h1>Settings</h1>
+<h5>Swiping Preferences</h5>
 
-<%# location %>
+<h6>Distance from me:</h6>
 
-<div class="slide">
-Age
-  <%= range_field_tag(:age, in: 1..20, name: 'dog age') %>
+
+<div>
+  <form action="/matches" method="get">
+    <ul>
+      <li>
+      <h6>Age</h6>
+          <div class="tag-item">
+            <input class="settings-button" id="age_puppy" name="age" type="checkbox" value="puppy" />
+            <label for="age_puppy">Puppy</label>
+            <input class="settings-button" id="age_adult" name="age" type="checkbox" value="adult" />
+            <label for="age_adult">Adult</label>
+            <input class="settings-button" id="age_senior" name="age" type="checkbox" value="senior" />
+            <label for="age_senior">Senior</label>
+          </div>
+      </li>
+      <li>
+        <h6>Gender</h6>
+          <div class="tag-item">
+            <input class="settings-button" id="gender_female" name="gender" type="checkbox" value="female" />
+            <label for="gender_female">Female</label>
+            <input class="settings-button" id="gender_male" name="gender" type="checkbox" value="male" />
+            <label for="gender_male">Male</label>
+          </div>
+      </li>
+      <li>
+        <h6>Size</h6>
+          <div class="tag-item">
+            <input class="settings-button" id="size_small" name="size" type="checkbox" value="small" />
+            <label for="size_small">Small</label>
+            <input class="settings-button" id="size_medium" name="size" type="checkbox" value="medium" />
+            <label for="size_medium">Medium</label>
+            <input class="settings-button" id="size_large" name="size" type="checkbox" value="large" />
+            <label for="size_large">Large</label>
+          </div>
+      </li>
+      <li>
+        <h6>Personality</h6>
+          <div class="tag-item">
+            <input class="settings-button" id="personality_slow" name="personality" type="checkbox" value="slow" />
+            <label for="personality_slow">Slow</label>
+            <input class="settings-button" id="personality_shy" name="personality" type="checkbox" value="shy" />
+            <label for="personality_shy">Shy</label>
+            <input class="settings-button" id="personality_friendly" name="personality" type="checkbox" value="friendly" />
+            <label for="personality_friendly">Friendly</label>
+            <input class="settings-button" id="personality_rough" name="personality" type="checkbox" value="rough" />
+            <label for="personality_rough">Rough</label>
+            <input class="settings-button" id="personality_independent" name="personality" type="checkbox" value="independent" />
+            <label for="personality_independent">Independent</label>
+            <input class="settings-button" id="personality_energetic" name="personality" type="checkbox" value="energetic" />
+            <label for="personality_energetic">Energetic</label>
+      </li>
+    </ul>
+    <input type="submit" value="Submit">
+  </form>
 </div>
 
-<%# gender
-size
-personality %>
+<button>Reset/Clear</button>
 
-<h3>Log Out</h3>
-
+<button><h3>Log Out</h3></button>
 
 
 <%# var slider = document.getElementById("myRange");

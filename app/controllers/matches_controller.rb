@@ -25,6 +25,11 @@ class MatchesController < ApplicationController
     # Save
     @match = Match.find(params[:id])
     if @match.update(match_params)
+      # Create Notification (for both the other user & current_user)
+      if params[:match][:status] == "accepted"
+        Notification.create(recipient: @match.matcher, actor: current_user, action: "matched", notifiable: @match)
+        Notification.create(recipient: @match.matchee, actor: current_user, action: "matched", notifiable: @match)
+      end
       redirect_to matches_path, status: :see_other
     else
       redirect_to matches_path, status: :unprocessable_entity, alert: "Try again later"

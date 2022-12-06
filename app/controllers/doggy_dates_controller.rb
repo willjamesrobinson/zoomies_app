@@ -61,6 +61,10 @@ class DoggyDatesController < ApplicationController
   end
 
   def destroy
+    @doggydate = DoggyDate.find(params[:id])
+    @doggydate.destroy
+    # No need for app/views/restaurants/destroy.html.erb
+    redirect_to doggy_dates_path, status: :see_other
   end
 
   private

@@ -1,0 +1,40 @@
+<% @matches1.each do |match| %>
+  <% match.matcher.dogs.each do |dog| %>
+  <%=link_to match_path(match) do %>
+<div class="chat" style="margin-top:8px;">
+  <div class="card__avatar">
+    <%= cl_image_tag dog.photos.first.key, height: 56, width: 56, crop: :fill%>
+    <div class="badge"></div>
+  </div>
+  <div>
+    <h3 class="title"><%="#{dog.name} and #{dog.user.first_name}"%></h3>
+    <% if match.messages.present? %>
+      <p><%=match.messages.last.content%></p>
+    <%else%>
+      <p>Say Hello!</p>
+    <%end %>
+  </div>
+</div>
+  <% end %>
+<% end %>
+<% end %>
+<% @matches2.each do |match| %>
+  <% match.matchee.dogs.each do |dog| %>
+  <%=link_to match_path(match) do %>
+<div class="chat" style="margin-top:8px;">
+  <div class="card__avatar">
+    <%= cl_image_tag dog.photos.first.key, height: 56, width: 56, crop: :fill%>
+    <div class="badge"></div>
+  </div>
+  <div>
+    <h3 class="title"><%="#{dog.name} and #{dog.user.first_name}"%></h3>
+    <% if match.messages.present? %>
+      <p><%=match.messages.last.content%></p>
+    <%else%>
+      <p>Say Hello!</p>
+    <%end %>
+  </div>
+</div>
+  <% end %>
+<% end %>
+<% end %>

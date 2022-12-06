@@ -5,6 +5,10 @@ class MessagesController < ApplicationController
     @message.match = @match
     @message.user = current_user
     if @message.save
+      # Create Notification (for the other user, not current_user)
+      recipient_user = @match.matcher == current_user ? @match.matchee : @match.matcher
+      Notification.create(recipient: recipient_user, actor: current_user, action: "messaged", notifiable: @message)
+      # Broadcast
       MatchChannel.broadcast_to(
         @match,
         render_to_string(partial: "message", locals: {message: @message})
