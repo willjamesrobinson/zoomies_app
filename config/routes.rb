@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     resources :doggy_dates, exclude: [:index]
   end
 
-  resources :notifications do
+  resources :notifications, only: [] do
     collection do
       post :mark_as_read
     end
