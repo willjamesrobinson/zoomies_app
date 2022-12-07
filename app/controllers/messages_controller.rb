@@ -11,7 +11,10 @@ class MessagesController < ApplicationController
       # Broadcast
       MatchChannel.broadcast_to(
         @match,
-        render_to_string(partial: "message", locals: {message: @message})
+        {
+          html: render_to_string(partial: "message", locals: {message: @message}),
+          senderId: current_user.id
+        }
       )
       head :ok
     else
