@@ -13,7 +13,9 @@
   margin-right:2px;
   overflow: hidden;
   background: white;
-  padding: 20px;
+  padding: 17px;
+  background-color: rgba(81,146,89,0.1);
+  border-radius: 20px;
 }
 
 .wrapper .item img {
@@ -22,5 +24,4 @@
 
 .wrapper .item a {
   color: black;
-  text-decoration: none;
 }

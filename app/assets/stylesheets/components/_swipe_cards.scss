@@ -11,8 +11,8 @@
 // }
 
 .tinder {
-  width: 100vw;
-  height: 100vh;
+  // width: 100vw;
+  height: 85vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -69,7 +69,7 @@
   display: inline-block;
   width: 90vw;
   max-width: 400px;
-  height: 70vh;
+  height: 78vh;
   background: #FFFFFF;
   padding-bottom: 40px;
   border-radius: 8px;
@@ -111,7 +111,6 @@
 .tinder--buttons {
   flex: 0 0 100px;
   text-align: center;
-  padding-top: 20px;
 }
 
 .tinder--buttons button {
@@ -129,7 +128,7 @@
 }
 
 .tinder--buttons i {
-  font-size: 32px;
+  font-size: 76px;
   vertical-align: middle;
 }
 
