@@ -38,7 +38,8 @@ class ProfilesController < ApplicationController
     # @matches = Match.where(matchee.dogs.first.gender == params[:gender])
     # @matches = full_matches.matchee.dogs.where(gender: params[:gender])
     @matches = full_matches.select do |match|
-      match.matcher.dogs.first.gender == params[:gender] || match.matcher.dogs.first.gender == params[:gender].capitalize
+      true
+      # match.matcher.dogs.first.gender == params[:gender] || match.matcher.dogs.first.gender == params[:gender].capitalize
       # match.matchee.dogs.first.where(gender: params[:gender]).nil?
       # full_matches.first.matchee.dogs.first.gender
     end
