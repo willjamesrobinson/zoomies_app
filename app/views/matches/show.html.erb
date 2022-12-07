@@ -1,36 +1,54 @@
 <div class="container chatroom"
   data-controller="match-subscription"
   data-match-subscription-match-id-value="<%= @match.id %>"
+  data-match-subscription-current-user-id-value="<%= current_user.id %>"
 >
   <h1><%= @match.matcher == current_user ? @match.matchee.first_name : @match.matcher.first_name %></h1>
 
-  <div class="messages" data-match-subscription-target="messages">
-    <% @match.messages.each do |message| %>
-      <% if message.doggy_date.present? && message.user_id == current_user.id %>
-        <%= render "doggy_dates/inviter_form", message: message   %>
-      <% elsif message.doggy_date.present? && message.user_id != current_user.id %>
-        <%= render "doggy_dates/request_form", doggy_date: message.doggy_date, match: @match, message: message %>
-      <% else %>
-        <%= render "messages/message", message: message %>
+  <div class="content bootstrap snippets bootdey decor-default a-chat chat-body" style="outline: none;">
+    <div class="messages" data-match-subscription-target="messages">
+      <% @match.messages.each do |message| %>
+        <% if message.doggy_date.present? && message.user_id == current_user.id %>
+          <%= render "doggy_dates/inviter_form", message: message   %>
+        <% elsif message.doggy_date.present? && message.user_id != current_user.id %>
+          <%= render "doggy_dates/request_form", doggy_date: message.doggy_date, match: @match, message: message %>
+        <% else %>
+          <%= render "messages/message", message: message %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
+    <div class="answer-add"></div>
   </div>
+  <div class="container-fluid">
+    <%= simple_form_for [@match, @message],
+      html: { data: { action: "turbo:submit-end->match-subscription#resetForm" }, class: "d-flex" } do |f|
+    %>
+    <%#  %>
+    <%= f.input :content,
+      label: false,
+      placeholder: "Write a Message",
+      wrapper_html: {class: "flex-grow-1"}
+    %>
+    <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <% end %>
+    <%= link_to "DoggyDate?", new_match_doggy_date_path(@match) %>
+  </div>
+  <%# <div> %>
+  <%# little engine logo
+  attach to modal %>
+  <%# </div> %>
 
-
-<%= simple_form_for [@match, @message],
-  html: { data: { action: "turbo:submit-end->match-subscription#resetForm" }, class: "d-flex" } do |f|
-%>
-  <%= f.input :content,
-    label: false,
-    placeholder: "Write a Message",
-    wrapper_html: {class: "flex-grow-1"}
-  %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-  <% end %>
-  <%= link_to "DoggyDate?", new_match_doggy_date_path(@match) %>
 </div>
 
-<div>
-<%# little engine logo
-attach to modal %>
+<% if false %>
+<div style="position: fixed; height: 100vh; width: 100vw; top: 0; left: 0;">
+  <div class="bg-primary p-2 w-100 h-100 position-relative">
+    <div class="bg-secondary" style="height: 100%;  overflow: scroll;">
+      <% 100.times do %>
+        <div class="bg-white p-4 mb-1"></div>
+      <% end %>
+    </div>
+    <div class="p-4 bg-white position-absolute bottom-0 w-100" style="height: 200px;">Form</div>
+  </div>
 </div>
+<% end %>
