@@ -2,24 +2,31 @@
   <h1>Find a Match</h1>
   <%# Can only start swiping if has dog %>
 
-  <button class="search-button">
+<button class="search-button">
     <%= link_to "Search Preferences", settings_path %>
   </button>
 
   <% if current_user.dogs.empty? %>
     <p><strong>Add your dog(s) to your <%= link_to "profile", show_profile_path(current_user.id) %> before you look for matches!</strong></p>
   <% else %>
-  <%# Shows pending matches %>
-  <%= turbo_stream_from "user_#{current_user.id}_pending_matches" %>
-  <div id="pending_matches">
-    <% @matches.each do |match| %>
-    <%= render match %>
-    <% end %>
-  </div>
+    <%# Shows pending matches %>
+    <%= turbo_stream_from "user_#{current_user.id}_pending_matches" %>
+    <div id="pending_matches">
+      <%= turbo_frame_tag 'tinder' do %>
+        <div class="tinder">
+          <div class="tinder--status">
+            <i class="fa fa-remove"></i>
+            <i class="fa fa-heart"></i>
+          </div>
+          <div class="tinder--cards">
+            <% @matches.each do |match| %>
+              <%= render match %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
-
-<%# <div id="<%= dom_id(current_user, :matches) "></div> %>
-
 
 <%# TODO Anna add filters button here %>

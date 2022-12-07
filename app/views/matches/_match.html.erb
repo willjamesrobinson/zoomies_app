@@ -1,67 +1,65 @@
-<%= turbo_frame_tag dom_id(match) do %>
-  <% if match.persisted? %>
-  <ul>
-    <% match.matcher.dogs.each do |dog| %>
-    <li>🐕 <%= "#{dog.name.capitalize}, #{dog.age}yr, #{dog.gender.capitalize}, #{dog.breed.capitalize}"  %></li>
-    <% end %>
-    <li>🧍 <%= link_to match.matcher.first_name.capitalize, show_profile_path(match.matcher) %>, <%= match.matcher.age %>yr ----- <%# (Prematch) %>
-    <%= link_to "Accept", match_path(match, match:{ status: "accepted" }), data: {turbo_method: "PATCH"} %>
-    <%= link_to "Decline", match_path(match, match:{status: "declined"}), data: {turbo_method: "PATCH"}  %></li>
-  </ul>
-  <% else %>
-  <ul>
-    <% match.matchee.dogs.each do |dog| %>
-    <li>🐕 <%= "#{dog.name.capitalize}, #{dog.age}yr, #{dog.gender.capitalize}, #{dog.breed.capitalize}"  %></li>
-    <% end %>
-    <li>🧍 <%= link_to match.matchee.first_name.capitalize, show_profile_path(match.matchee) %>, <%= match.matchee.age %>yr ----- <%# (Prospective match) %>
-    <%= link_to "Accept", create_match_path(match, match:{status: "pending", matchee_id: match.matchee_id, matcher_id: match.matcher_id}), data: {turbo_method: "POST"} %>
-    <%= link_to "Decline", create_match_path(match, match:{status: "declined", matchee_id: match.matchee_id, matcher_id: match.matcher_id}), data: {turbo_method: "POST"}  %></li>
-  </ul>
-  <% end%>
-<% end %>
-
 <div class="tinder">
-
   <div class="tinder--status">
     <i class="fa fa-remove"></i>
     <i class="fa fa-heart"></i>
   </div>
 
-    <div class="tinder--cards">
-      <% match.matcher.dogs.each do |dog| %>
-        <div class="tinder--card">
-        <% if dog.photos.attached? %>
-          <%= cl_image_tag dog.photos.first.key, height: 400, width: 400, crop: :fill %>
-        <% else %>
-        <%= image_tag "dog.png", width: 500 %>
-        <% end %>
-          <div class="text" style="margin-top: 0px; margin-left:0px; text-align: left; padding:10px;">
-            <h2><%= "#{dog.name.capitalize}, #{dog.age}"%></h2>
-          </div>
-          <ul style="text-align:left; margin-left:10px; text-align:left; padding-left:0px;">
-          <li style="list-style-type:none;"><iconify-icon icon="bi:gender-ambiguous"></iconify-icon><%=" #{dog.gender.capitalize}"%></li>
-          <li style="list-style-type:none;"><iconify-icon icon="fa6-solid:dog"></iconify-icon><%=" #{dog.breed.capitalize}"%></li>
-          </ul>
-        </div>
-      <% end %>
-      <% match.matchee.dogs.each do |dog| %>
-        <div class="tinder--card">
-        <% if dog.photos.attached? %>
-          <%= cl_image_tag dog.photos.first.key, height: 400, width: 400, crop: :fill %>
-        <% else %>
-        <%= image_tag "dog.png", width: 500 %>
-        <% end %>
-         <div class="text" style="margin-top: 0px; margin-left:0px; text-align: left; padding:10px;">
-            <h2><%= "#{dog.name.capitalize}, #{dog.age}"%></h2>
-          </div>
-          <ul style="text-align:left; margin-left:10px; text-align:left; padding-left:0px;">
-          <li style="list-style-type:none;"><iconify-icon icon="bi:gender-ambiguous"></iconify-icon><%="#{dog.gender.capitalize}"%></li>
-          <li style="list-style-type:none;"><iconify-icon icon="fa6-solid:dog"></iconify-icon><%="#{dog.breed.capitalize}"%></li>
-          </ul>
-        </div>
-      <% end%>
+    <div class="tinder--cards"> %>
+      <% if match.persisted? %>
+        <% match.matcher.dogs.each do |dog| %>
+          <div class="tinder--card">
+            <% if dog.photos.attached? %>
+              <%= cl_image_tag dog.photos.first.key, height: 400, width: 400, crop: :fill %>
+            <% else %>
+            <%= image_tag "dog.png", width: 500 %>
+            <% end %>
+            <div class="text" style="margin-top: 0px; margin-left:0px; text-align: left; padding:10px; margin-left:10px;">
+              <h2><%= "#{dog.name.capitalize}, #{dog.age}"%></h2>
+            </div>
+            <ul style="text-align:left; margin-left:10px; text-align:left; padding-left:0px; margin-left:20px;">
+            <li style="list-style-type:none;"><iconify-icon icon="bi:gender-ambiguous"></iconify-icon><%=" #{dog.gender.capitalize}"%></li>
+            <li style="list-style-type:none;"><iconify-icon icon="fa6-solid:dog"></iconify-icon><%=" #{dog.breed.capitalize}"%></li>
+            </ul>
+            <div class="tinder--buttons" style="display: flex; align-items: center; justify-content: center; margin-right: 30px;">
+              <%= link_to match_path(match, match:{status: "declined"}), id: 'nope', data: {turbo_method: "PATCH"} do %>
+                <button><i class="fa fa-remove" style="padding:20px;"></i></button>
+              <% end %>
 
-    <div class="tinder--card">
+              <%= link_to match_path(match, match:{ status: "accepted" }), id: 'love', data: {turbo_method: "PATCH"} do %>
+                <button><i class="fa fa-heart" style="padding:20px;"></i></button>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <% match.matchee.dogs.each do |dog| %>
+          <div class="tinder--card">
+            <% if dog.photos.attached? %>
+              <%= cl_image_tag dog.photos.first.key, height: 400, width: 400, crop: :fill %>
+            <% else %>
+              <%= image_tag "dog.png", width: 500 %>
+            <% end %>
+            <div class="text" style="margin-top: 0px; margin-left:0px; text-align: left; padding:10px; margin-right: 30px; margin-left:10px;">
+              <h2><%= "#{dog.name.capitalize}, #{dog.age}"%></h2>
+            </div>
+            <ul style="text-align:left; margin-left:10px; text-align:left; padding-left:0px; margin-left:20px;">
+            <li style="list-style-type:none;"><iconify-icon icon="bi:gender-ambiguous"></iconify-icon><%="#{dog.gender.capitalize}"%></li>
+            <li style="list-style-type:none;"><iconify-icon icon="fa6-solid:dog"></iconify-icon><%="#{dog.breed.capitalize}"%></li>
+            </ul>
+            <div class="tinder--buttons" style="display: flex; align-items: center; justify-content: center;">
+              <%= link_to create_match_path(match, match:{status: "declined", id: 'nope', matchee_id: match.matchee_id, matcher_id: match.matcher_id}), data: {turbo_method: "POST"} do %>
+                <button><i class="fa fa-remove" style="padding:20px;"></i></button>
+              <% end %>
+
+              <%= link_to create_match_path(match, match:{status: "pending", id: 'love', matchee_id: match.matchee_id, matcher_id: match.matcher_id}), data: {turbo_method: "POST"} do %>
+                <button><i class="fa fa-heart" style="padding:20px;"></i></button>
+              <% end %>
+            </div>
+          </div>
+        <% end%>
+      <% end %>
+
+    <%# <div class="tinder--card">
       <img src="https://placeimg.com/600/300/animals">
       <h3>Demo card 2</h3>
       <p>This is a demo for Tinder like swipe cards</p>
@@ -80,11 +78,4 @@
       <img src="https://placeimg.com/600/300/arch">
       <h3>Demo card 5</h3>
       <p>This is a demo for Tinder like swipe cards</p>
-    </div>
-  </div>
-
-  <div class="tinder--buttons">
-    <button id="nope"><i class="fa fa-remove"></i></button>
-    <button id="love"><i class="fa fa-heart"></i></button>
-  </div>
-</div>
+    </div> %>
