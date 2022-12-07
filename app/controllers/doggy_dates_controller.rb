@@ -1,3 +1,5 @@
+
+require 'http'
 class DoggyDatesController < ApplicationController
   def index
     @doggy_dates = current_user.doggy_dates
@@ -24,17 +26,30 @@ class DoggyDatesController < ApplicationController
   def new
     @match = Match.find(params[:match_id])
     @doggy_date = DoggyDate.new
-    get_park = "https://api.mapbox.com/geocoding/v5/mapbox.places/park.json?type=poi&proximity=#{current_user.latitude},#{current_user.longitude}&access_token=#{MAPBOX_API_KEY}"
+    get_park = HTTP.get("https://api.mapbox.com/geocoding/v5/mapbox.places/park.json?type=poi&proximity=#{current_user.longitude},#{current_user.latitude}&access_token=#{ENV['MAPBOX_API_KEY']}")
     get_park_parsed = JSON.parse(get_park)
     features = get_park_parsed["features"]
     # for loop needed in page to grab co-ordinates
+    park_array = []
     for i in (1..5)
       park = features[i-1]
-      name = park["text"]
+      name = park["place_name"]
       coord = park.dig "geometry", "coordinates"
-      lat = coord[0]
-      long = coord[1]
+      park = Park.create(
+        address: name,
+        latitude: coord[1],
+        longitude: coord[0]
+      )
+      park_array << park
     end
+    @markers = park_array.map do |dog_park|
+      {
+        lat: dog_park.latitude,
+        lng: dog_park.longitude,
+        info_window: render_to_string(partial: "info_window", locals: {dog_park: dog_park})
+        }
+    end
+    console
   end
 
   def create
@@ -68,6 +83,13 @@ class DoggyDatesController < ApplicationController
   end
 
   private
+
+  def image_scraper(address)
+    scraper = Scrapix::GoogleImages.new
+    scraper.query = address
+    scraper.total = 1
+    scraper.find
+  end
 
   def doggy_date_params
     params.require(:doggy_date).permit(:status, :location, :date)

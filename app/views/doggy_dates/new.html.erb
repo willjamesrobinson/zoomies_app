@@ -3,6 +3,10 @@
   <%= simple_form_for [@match, @doggy_date] do |f| %>
   <%= f.datetime_field :date %>
   <%= f.input :location %>
+  <div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   <%= f.submit %>
   <% end %>
 </div>
