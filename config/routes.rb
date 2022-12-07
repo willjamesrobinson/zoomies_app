@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :doggy_dates, only: [:index, :destroy]
   resources :notifications, only: [] do
     collection do
-      post :mark_as_read
+      patch :mark_as_read
     end
   end
 
