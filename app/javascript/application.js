@@ -68,4 +68,3 @@ document.addEventListener('turbo:frame-render', (event) => {
 document.addEventListener("turbo:load", () => {
   initSwipeCards()
 })
-
