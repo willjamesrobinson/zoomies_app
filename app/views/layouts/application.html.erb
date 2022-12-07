@@ -14,25 +14,31 @@
 
   <body>
     <nav class="navbar navbar-expand-lg" style="background-color: #F0BB62;">
-      <div class="container-fluid">
-        <div class="row justify-content-center">
+      <div class="container-fluid d-flex">
+        <div class="justify-content-center">
           <strong>ZOOMIES</strong>
         </div>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav ms-auto">
+        <div class="flex-grow-1">
+          <ul class="navbar-nav ms-auto d-flex flex-row justify-content-end align-items-center">
           <% if user_signed_in? %>
-          <li class="nav-item">
-          <%= link_to "DoggleDoodleDoo", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+          <li class="nav-item fst-italic ps-2">
+          Hi <%= current_user.first_name.split.first %>!
+          </li>
+          <li class="nav-item ps-2">
+            <%= link_to "About us", '/about-us', class: "nav-link" %>
+          </li>
+          <li class="nav-item ps-2">
+          <%= link_to "Dog Out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
           </li>
           <% else %>
-            <li class="nav-item">
+            <li class="nav-item ps-2">
               <%= link_to "Login", new_user_session_path, class: "nav-link" %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item ps-2">
               <%= link_to "Sign up", '/users/sign_up', class: "nav-link" %>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
+            <li class="nav-item ps-2">
+              <%= link_to "About us", '/about-us', class: "nav-link" %>
             </li>
           <% end %>
           </ul>
