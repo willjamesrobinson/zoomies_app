@@ -37,8 +37,32 @@ class ProfilesController < ApplicationController
     # @matches = Match.where(Match.first.matchee.dogs.first.gender == params[:gender])
     # @matches = Match.where(matchee.dogs.first.gender == params[:gender])
     # @matches = full_matches.matchee.dogs.where(gender: params[:gender])
-    @matches = full_matches.select do |match|
-      true
+
+    # match.matcher.dogs.first.gender == params[:gender] || match.matcher.dogs.first.gender == params[:gender].capitalize
+    @matches = []
+    full_matches.each do |match|
+      if match.matcher == current_user
+        dogs_match = match.matchee.dogs.where(size: params[:size]).where(gender: params[:gender])
+        @matches << match if !dogs_match.empty?
+        elsif match.matchee == current_user
+        dogs_match = match.matcher.dogs.where(size: params[:size]).where(gender: params[:gender])
+        @matches << match if !dogs_match.empty?
+          # if match.matcher.dogs.any? { |dog| dog.gender.downcase == params[:gender] } &&
+          # # match.matcher.dogs.any? { |dog| dog.age == params[:age] } &&
+          # match.matcher.dogs.any? { |dog| dog.size == params[:size] }
+          # @matches << match
+          # end
+          # match.matcher.dogs.any? { |dog| dog.personality == params[:personality] }
+        # else match.matcher == current_user
+        #     match.matchee.dogs.any? { |dog| dog.gender.downcase == params[:gender] } &&
+        #     #   match.matchee.dogs.any? { |dog| dog.age == params[:age] } &&
+        #       match.matchee.dogs.any? { |dog| dog.size == params[:size] }
+        #     #   match.matchee.dogs.any? { |dog| dog.personality == params[:personality] }
+      end
+    end
+
+    # @matches = full_matches.select do |match|
+    #  true
 
       # match.matcher.dogs.first.gender == params[:gender]
       # || match.matcher.dogs.first.gender == params[:gender].capitalize
@@ -46,21 +70,22 @@ class ProfilesController < ApplicationController
 
       # match.matchee.dogs.first.where(gender: params[:gender]).nil?
       # full_matches.first.matchee.dogs.first.gender
-    end
+   # end
+
 
   end
 
-  def settings
-  end
+  # def filtered_by_gender
+  # end
 
-  def dogs_by_preferences
-    @dogs = Dog.where(nil)
-    @dogs = @dogs.filter_by_location(params[:location]) if params[:location].present?
-    @dogs = @dogs.filter_by_age(params[:age]) if params[:age].present?
-    @dogs = @dogs.filter_by_gender(params[:gender]) if params[:gender].present?
-    @dogs = @dogs.filter_by_size(params[:size]) if params[:size].present?
-    @dogs = @dogs.filter_by_personality(params[:personailty]) if params[:personality].present?
-  end
+  # def dogs_by_preferences
+  #   @dogs = Dog.where(nil)
+  #   @dogs = @dogs.filter_by_location(params[:location]) if params[:location].present?
+  #   @dogs = @dogs.filter_by_age(params[:age]) if params[:age].present?
+  #   @dogs = @dogs.filter_by_gender(params[:gender]) if params[:gender].present?
+  #   @dogs = @dogs.filter_by_size(params[:size]) if params[:size].present?
+  #   @dogs = @dogs.filter_by_personality(params[:personailty]) if params[:personality].present?
+  # end
 
   private
 
