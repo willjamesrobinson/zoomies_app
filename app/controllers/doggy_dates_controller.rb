@@ -1,5 +1,6 @@
 
 require 'http'
+require 'google_search_results'
 class DoggyDatesController < ApplicationController
   def index
     @doggy_dates = current_user.doggy_dates
@@ -40,6 +41,10 @@ class DoggyDatesController < ApplicationController
         latitude: coord[1],
         longitude: coord[0]
       )
+      # image = (image_scraper(park.address))
+      # file = URI.open(image)
+      # park.photo.attach(io: file, filename: "nes.png", content_type: "image/jpg")
+      # park.save
       park_array << park
     end
     @markers = park_array.map do |dog_park|
@@ -49,7 +54,6 @@ class DoggyDatesController < ApplicationController
         info_window: render_to_string(partial: "info_window", locals: {dog_park: dog_park})
         }
     end
-    console
   end
 
   def create
@@ -85,10 +89,17 @@ class DoggyDatesController < ApplicationController
   private
 
   def image_scraper(address)
-    scraper = Scrapix::GoogleImages.new
-    scraper.query = address
-    scraper.total = 1
-    scraper.find
+    criteria = {
+      q: address,
+      hl: "en",
+      tbm: "isch",
+      num: "1",
+      ijn: "0",
+      api_key: "541e3fb6cf756e3309b910c4456e0562d147645c9446a34160906134d66c0dcc"
+    }
+    search = GoogleSearch.new(criteria)
+    result = search.get_hash[:images_results][0]
+    result[:thumbnail]
   end
 
   def doggy_date_params

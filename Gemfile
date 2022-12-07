@@ -16,7 +16,7 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 
 # Scrapix gem
-gem 'scrapix'
+gem 'google_search_results'
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
@@ -53,6 +53,9 @@ gem "cloudinary"
 
 # Http Gem
 gem "http"
+
+# TimePicker Bootstrap
+gem 'bootstrap-timepicker-rails', '~> 0.1.3'
 
 # Bootstrap
 gem 'bootstrap', '~> 5.2.3'
