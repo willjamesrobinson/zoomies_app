@@ -33,7 +33,7 @@ class ProfilesController < ApplicationController
       Match.new(matcher_id: current_user.id, matchee_id: user.id)
     end
     # Mix the two arrays together
-    full_matches = (prematches + potential_matches).shuffle
+    full_matches = (prematches + potential_matches)
     # @matches = Match.where(Match.first.matchee.dogs.first.gender == params[:gender])
     # @matches = Match.where(matchee.dogs.first.gender == params[:gender])
     # @matches = full_matches.matchee.dogs.where(gender: params[:gender])
@@ -44,7 +44,7 @@ class ProfilesController < ApplicationController
       # match.matchee.dogs.first.where(gender: params[:gender]).nil?
       # full_matches.first.matchee.dogs.first.gender
     end
-    console
+
   end
 
   def settings
