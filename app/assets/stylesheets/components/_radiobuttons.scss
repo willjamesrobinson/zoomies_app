@@ -5,9 +5,9 @@
 
 .settings-button + label {
   cursor: pointer;
-  border: solid darkgreen;
-  color: darkgreen;
-  background-color: orange;
+  border: solid #064635;
+  color: #064635;
+  background-color: #F0BB62;
   border-radius: 16px;
   padding: 5px;
   width: 80px;
@@ -17,8 +17,8 @@
 }
 
 .settings-button:checked + label {
-  color: orange;
-  background-color: darkgreen;
+  color: #F0BB62;
+  background-color: #064635;
 }
 
 .tag-item {
