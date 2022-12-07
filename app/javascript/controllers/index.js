@@ -10,5 +10,17 @@ application.register("address-autocomplete", AddressAutocompleteController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import MapController from "./map_controller"
+application.register("map", MapController)
+
 import MatchSubscriptionController from "./match_subscription_controller"
 application.register("match-subscription", MatchSubscriptionController)
+
+// import Flatpickr
+import Flatpickr from 'stimulus-flatpickr'
+
+// Import style for flatpickr
+require("flatpickr/dist/flatpickr.css")
+
+// Manually register Flatpickr as a stimulus controller
+application.register('flatpickr', Flatpickr)

@@ -6,9 +6,9 @@
       <% @matches1.each do |match| %>
       <% match.matcher.dogs.each do |dog| %>
         <%=link_to match_path(match) do %>
-        <div class="item" style="margin-right:15px;">
+        <div class="item" style="margin-right:15px; color:black; font-size: 18px;">
           <%=cl_image_tag dog.photos.first.key, height: 70, width: 70, crop: :fill%>
-        <%=dog.name%>
+        <p><%=dog.name%></p>
         </div>
         <% end %>
       <% end %>
@@ -16,9 +16,9 @@
       <% @matches2.each do |match| %>
       <% match.matchee.dogs.each do |dog| %>
       <%=link_to match_path(match) do %>
-        <div class="item" style="margin-right:15px;">
+        <div class="item" style="margin-right:15px; color:black; font-size: 18px;">
           <%=cl_image_tag dog.photos.first.key, height: 70, width: 70, crop: :fill%>
-        <%= dog.name%>
+        <p><%= dog.name%></p>
         </div>
         <% end %>
       <% end %>
