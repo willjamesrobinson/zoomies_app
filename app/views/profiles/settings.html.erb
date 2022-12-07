@@ -1,11 +1,15 @@
-<h5>Swiping Preferences</h5>
+<h5>Search Preferences</h5>
 
-<h6>Distance from me:</h6>
 
 
 <div>
   <form action="/matches" method="get">
     <ul>
+    <li>
+      <label for="distance" class="form-label">Distance from me:</label><br>
+      <input id="distance" type="range" value="10" min="1" max="20" step="1" oninput="this.nextElementSibling.value = this.value">
+<output>10</output>
+    </li>
       <li>
       <h6>Age</h6>
           <div class="tag-item">
@@ -20,45 +24,52 @@
       <li>
         <h6>Gender</h6>
           <div class="tag-item">
-            <input class="settings-button" id="gender_female" name="gender" type="checkbox" value="female" />
+            <input class="settings-button" id="gender_female" name="gender[]" type="checkbox" value="female" />
             <label for="gender_female">Female</label>
-            <input class="settings-button" id="gender_male" name="gender" type="checkbox" value="male" />
+            <input class="settings-button" id="gender_male" name="gender[]" type="checkbox" value="male" />
             <label for="gender_male">Male</label>
           </div>
       </li>
       <li>
         <h6>Size</h6>
           <div class="tag-item">
-            <input class="settings-button" id="size_small" name="size" type="checkbox" value="small" />
+            <input class="settings-button" id="size_small" name="size[]" type="checkbox" value="small" />
             <label for="size_small">Small</label>
-            <input class="settings-button" id="size_medium" name="size" type="checkbox" value="medium" />
+            <input class="settings-button" id="size_medium" name="size[]" type="checkbox" value="medium" />
             <label for="size_medium">Medium</label>
-            <input class="settings-button" id="size_large" name="size" type="checkbox" value="large" />
+            <input class="settings-button" id="size_large" name="size[]" type="checkbox" value="large" />
             <label for="size_large">Large</label>
           </div>
       </li>
       <li>
         <h6>Personality</h6>
           <div class="tag-item">
-            <input class="settings-button" id="personality_slow" name="personality" type="checkbox" value="slow" />
+            <input class="settings-button" id="personality_slow" name="personality[]" type="checkbox" value="slow" />
             <label for="personality_slow">Slow</label>
-            <input class="settings-button" id="personality_shy" name="personality" type="checkbox" value="shy" />
+            <input class="settings-button" id="personality_shy" name="personality[]" type="checkbox" value="shy" />
             <label for="personality_shy">Shy</label>
-            <input class="settings-button" id="personality_friendly" name="personality" type="checkbox" value="friendly" />
-            <label for="personality_friendly">Friendly</label>
-            <input class="settings-button" id="personality_rough" name="personality" type="checkbox" value="rough" />
+            <input class="settings-button" id="personality_playful" name="personality[]" type="checkbox" value="playful" />
+            <label for="personality_playful">Playful</label>
+            <input class="settings-button" id="personality_rough" name="personality[]" type="checkbox" value="rough" />
             <label for="personality_rough">Rough</label>
-            <input class="settings-button" id="personality_independent" name="personality" type="checkbox" value="independent" />
-            <label for="personality_independent">Independent</label>
-            <input class="settings-button" id="personality_energetic" name="personality" type="checkbox" value="energetic" />
+            <input class="settings-button" id="personality_friendly" name="personality[]" type="checkbox" value="friendly" />
+            <label for="personality_friendly">Friendly</label>
+            <input class="settings-button" id="personality_energetic" name="personality[]" type="checkbox" value="energetic" />
             <label for="personality_energetic">Energetic</label>
       </li>
     </ul>
-    <input type="submit" value="Submit">
+    <div>
+      <button>
+      <input type="submit" value="Submit">
+      </button>
+      <br>
+      <button>
+      <%= submit_tag "Reset", :class => "inputsubmit", :type => "reset" %>
+      </button>
+    </div>
   </form>
 </div>
 
-<button>Reset/Clear</button>
 
 <button><h3>Log Out</h3></button>
 

@@ -15,7 +15,7 @@ Match.destroy_all
 User.destroy_all
 
 puts "Seeding started"
-PERSONALITY = ["fast", "slow", "aggressive", "loyal", "funny", "loud", "quiet", "curious", "energetic", "friendly", "playful"]
+PERSONALITY = ["friendly", "shy", "playful", "energetic", "slow", "rough"]
 
 bob = User.new(email: "seed_user_bob@ymail.com", password: "123456", age: 55, gender: "male", first_name: "Bob", overview: "Cadbury is a good boy, he gets along with all dogs. He loves walks and playtime.")
 file = URI.open("https://images.unsplash.com/photo-1590074251929-76f7c465a3bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80")
@@ -43,42 +43,42 @@ else
   puts "ERROR creating Bob, Betty, George, Talina, Matt"
 end
 
-cadbury = Dog.new(name: "Cadbury", age: 10, gender: "male", size: "large", breed: "labrador", personality: ["loyal", "friendly", "playful"])
+cadbury = Dog.new(name: "Cadbury", age: 10, gender: "male", size: "medium", breed: "labrador", personality: ["friendly", "playful", "slow"])
 cadbury_file = URI.open("https://images.unsplash.com/photo-1610112748593-d3e7dc10b519?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
 cadbury.photos.attach(io: cadbury_file, filename: "#{cadbury.name}1.jpg", content_type: "image/jpg")
 cadbury_file = URI.open("https://images.unsplash.com/photo-1610112749119-8c17fed117fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80")
 cadbury.photos.attach(io: cadbury_file, filename: "#{cadbury.name}2.jpg", content_type: "image/jpg")
 cadbury.user = bob
 print "Cadbury... "
-fluff = Dog.new(name: "Fluff", age: 7, gender: "female", size: "small", breed: "pomeranian", personality: ["loud", "curious", "friendly"])
+fluff = Dog.new(name: "Fluff", age: 7, gender: "female", size: "small", breed: "pomeranian", personality: ["energetic", "playful", "friendly"])
 fluff_file = URI.open("https://images.unsplash.com/photo-1582456891925-a53965520520?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80")
 fluff.photos.attach(io: fluff_file, filename: "#{fluff.name}1.jpg", content_type: "image/jpg")
 fluff_file = URI.open("https://images.unsplash.com/photo-1592028616810-88480a45e406?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
 fluff.photos.attach(io: fluff_file, filename: "#{fluff.name}2.jpg", content_type: "image/jpg")
 fluff.user = betty
 print "Fluff... "
-fuzz = Dog.new(name: "Fuzz", age: 5, gender: "male", size: "small", breed: "pomeranian", personality: ["quiet", "slow", "friendly"])
+fuzz = Dog.new(name: "Fuzz", age: 5, gender: "male", size: "small", breed: "pomeranian", personality: ["shy", "slow", "friendly"])
 fuzz_file = URI.open("https://images.unsplash.com/photo-1626975883497-9a84c31be1a7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80")
 fuzz.photos.attach(io: fuzz_file, filename: "#{fuzz.name}1.jpg", content_type: "image/jpg")
 fuzz_file = URI.open("https://images.unsplash.com/photo-1608819368353-02e726da668d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=327&q=80")
 fuzz.photos.attach(io: fuzz_file, filename: "#{fuzz.name}2.jpg", content_type: "image/jpg")
 fuzz.user = betty
 print "Fuzz... "
-egg = Dog.new(name: "Egg", age: 6, gender: "male", size: "tiny", breed: "pug", personality: ["funny", "slow", "curious"])
+egg = Dog.new(name: "Egg", age: 6, gender: "male", size: "small", breed: "pug", personality: ["rough", "energetic", "playful"])
 egg_file = URI.open("https://images.unsplash.com/photo-1453227588063-bb302b62f50b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
 egg.photos.attach(io: egg_file, filename: "#{egg.name}1.jpg", content_type: "image/jpg")
 egg_file = URI.open("https://images.unsplash.com/photo-1469982866068-278880140412?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
 egg.photos.attach(io: egg_file, filename: "#{egg.name}2.jpg", content_type: "image/jpg")
 egg.user = george
 print "Egg... "
-ruby = Dog.new(name: "Ruby", age: 2, gender: "female", size: "large", breed: "saluki", personality: ["fast", "energetic", "quiet"])
+ruby = Dog.new(name: "Ruby", age: 2, gender: "female", size: "large", breed: "saluki", personality: ["shy", "slow", "playful"])
 ruby_file = URI.open("https://images.unsplash.com/photo-1483434748604-140edba26886?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1026&q=80")
 ruby.photos.attach(io: ruby_file, filename: "#{ruby.name}1.jpg", content_type: "image/jpg")
 ruby_file = URI.open("https://images.unsplash.com/photo-1649263395648-0ac58cfa8d75?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80")
 ruby.photos.attach(io: ruby_file, filename: "#{ruby.name}2.jpg", content_type: "image/jpg")
 ruby.user = talina
 print "Ruby... "
-croissant = Dog.new(name: "Croissant", age: 3, gender: "male", size: "horse", breed: "Dogue de Bordeaux", personality: ["aggressive", "energetic", "loyal"])
+croissant = Dog.new(name: "Croissant", age: 3, gender: "male", size: "large", breed: "Dogue de Bordeaux", personality: ["shy", "energetic", "rough"])
 croissant_file = URI.open("https://images.unsplash.com/photo-1567886932351-19e78e3e56c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80")
 croissant.photos.attach(io: croissant_file, filename: "#{croissant.name}1.jpg", content_type: "image/jpg")
 croissant_file = URI.open("https://images.unsplash.com/photo-1584128144719-15c684fbcb3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
@@ -96,7 +96,7 @@ end
 
 puts "Start creating random faker users, dogs & matches"
 num = 0
-5.times do
+25.times do
   num += 1
   name = Faker::FunnyName.name
   details = {
@@ -110,7 +110,7 @@ num = 0
   dog_details = {
     name: Faker::Creature::Dog.name,
     age: rand(1..12),
-    gender: Faker::Creature::Dog.gender,
+    gender: ["female", "male"].sample,
     size: ["small", "medium", "large"].sample,
     breed: Faker::Creature::Dog.breed,
     personality: [PERSONALITY.sample, PERSONALITY.sample, PERSONALITY.sample]
