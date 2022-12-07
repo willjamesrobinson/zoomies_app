@@ -41,24 +41,32 @@ class ProfilesController < ApplicationController
     # match.matcher.dogs.first.gender == params[:gender] || match.matcher.dogs.first.gender == params[:gender].capitalize
     @matches = []
     full_matches.each do |match|
-      if match.matcher == current_user
-        dogs_match = match.matchee.dogs.where(size: params[:size]).where(gender: params[:gender])
-        @matches << match if !dogs_match.empty?
-        elsif match.matchee == current_user
-        dogs_match = match.matcher.dogs.where(size: params[:size]).where(gender: params[:gender])
-        @matches << match if !dogs_match.empty?
-          # if match.matcher.dogs.any? { |dog| dog.gender.downcase == params[:gender] } &&
-          # # match.matcher.dogs.any? { |dog| dog.age == params[:age] } &&
-          # match.matcher.dogs.any? { |dog| dog.size == params[:size] }
-          # @matches << match
-          # end
-          # match.matcher.dogs.any? { |dog| dog.personality == params[:personality] }
-        # else match.matcher == current_user
-        #     match.matchee.dogs.any? { |dog| dog.gender.downcase == params[:gender] } &&
-        #     #   match.matchee.dogs.any? { |dog| dog.age == params[:age] } &&
-        #       match.matchee.dogs.any? { |dog| dog.size == params[:size] }
-        #     #   match.matchee.dogs.any? { |dog| dog.personality == params[:personality] }
-      end
+      matched_dogs = match.matcher == current_user ? match.matchee.dogs :  match.matcher.dogs
+      matched_dogs = matched_dogs.where(size: params[:size]) if params[:size]
+      matched_dogs = matched_dogs.where(gender: params[:gender]) if params[:gender]
+      @matches << match if matched_dogs.present?
+
+      # if match.matcher == current_user
+
+
+
+      #   @matches << match
+      #   else matched_dogs = match.matchee.dogs.where(size: params[:size]).where(gender: params[:gender])
+      #   @matches << match if !matched_dogs.empty?
+      #   elsif match.matchee == current_user
+      #   matched_dogs = match.matcher.dogs.where(size: params[:size]).where(gender: params[:gender])
+      #   # if match.matcher.dogs.any? { |dog| dog.gender.downcase == params[:gender] } &&
+      #   # # match.matcher.dogs.any? { |dog| dog.age == params[:age] } &&
+      #   # match.matcher.dogs.any? { |dog| dog.size == params[:size] }
+      #   # @matches << match
+      #   # end
+      #   # match.matcher.dogs.any? { |dog| dog.personality == params[:personality] }
+      #   # else match.matcher == current_user
+      #   #     match.matchee.dogs.any? { |dog| dog.gender.downcase == params[:gender] } &&
+      #   #     #   match.matchee.dogs.any? { |dog| dog.age == params[:age] } &&
+      #   #       match.matchee.dogs.any? { |dog| dog.size == params[:size] }
+      #   #     #   match.matchee.dogs.any? { |dog| dog.personality == params[:personality] }
+      # end
     end
 
     # @matches = full_matches.select do |match|

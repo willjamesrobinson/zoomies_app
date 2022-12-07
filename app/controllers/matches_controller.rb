@@ -15,9 +15,9 @@ class MatchesController < ApplicationController
   def create
     match = Match.new(match_params)
     if match.save
-      redirect_to matches_path
+      redirect_to matches_path(gender: params[:gender], size: params[:size])
     else
-      redirect_to matches_path, status: :unprocessable_entity, alert: "Try again later"
+      redirect_to matches_path(gender: params[:gender], size: params[:size]), status: :unprocessable_entity, alert: "Try again later"
     end
   end
 
@@ -30,9 +30,9 @@ class MatchesController < ApplicationController
         Notification.create(recipient: @match.matcher, actor: current_user, action: "matched", notifiable: @match)
         Notification.create(recipient: @match.matchee, actor: current_user, action: "matched", notifiable: @match)
       end
-      redirect_to matches_path, status: :see_other
+      redirect_to matches_path(gender: params[:gender], size: params[:size]), status: :see_other
     else
-      redirect_to matches_path, status: :unprocessable_entity, alert: "Try again later"
+      redirect_to matches_path(gender: params[:gender], size: params[:size]), status: :unprocessable_entity, alert: "Try again later"
     end
   end
 
