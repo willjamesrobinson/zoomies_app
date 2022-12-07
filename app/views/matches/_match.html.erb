@@ -1,10 +1,12 @@
-<div class="tinder">
+
+
+<%# <div class="tinder">
   <div class="tinder--status">
     <i class="fa fa-remove"></i>
     <i class="fa fa-heart"></i>
-  </div>
+  </div> %>
 
-    <div class="tinder--cards"> %>
+
       <% if match.persisted? %>
         <% match.matcher.dogs.each do |dog| %>
           <div class="tinder--card">
@@ -14,18 +16,18 @@
             <%= image_tag "dog.png", width: 500 %>
             <% end %>
             <div class="text" style="margin-top: 0px; margin-left:0px; text-align: left; padding:10px; margin-left:10px;">
-              <h2><%= "#{dog.name.capitalize}, #{dog.age}"%></h2>
+              <h2><%= link_to "#{dog.name.capitalize}, #{dog.age} #{dog.size}", show_profile_path(match.matcher) %></h2>
             </div>
             <ul style="text-align:left; margin-left:10px; text-align:left; padding-left:0px; margin-left:20px;">
             <li style="list-style-type:none;"><iconify-icon icon="bi:gender-ambiguous"></iconify-icon><%=" #{dog.gender.capitalize}"%></li>
             <li style="list-style-type:none;"><iconify-icon icon="fa6-solid:dog"></iconify-icon><%=" #{dog.breed.capitalize}"%></li>
             </ul>
             <div class="tinder--buttons" style="display: flex; align-items: center; justify-content: center; margin-right: 30px;">
-              <%= link_to match_path(match, match:{status: "declined"}), id: 'nope', data: {turbo_method: "PATCH"} do %>
+              <%= link_to match_path(match, match:{status: "declined" }, gender: params[:gender], size: params[:size]), id: 'nope', data: {turbo_method: "PATCH"} do %>
                 <button><i class="fa fa-remove" style="padding:20px;"></i></button>
               <% end %>
 
-              <%= link_to match_path(match, match:{ status: "accepted" }), id: 'love', data: {turbo_method: "PATCH"} do %>
+              <%= link_to match_path(match, match:{ status: "accepted" }, gender: params[:gender], size: params[:size]), id: 'love', data: {turbo_method: "PATCH"} do %>
                 <button><i class="fa fa-heart" style="padding:20px;"></i></button>
               <% end %>
             </div>
@@ -40,18 +42,18 @@
               <%= image_tag "dog.png", width: 500 %>
             <% end %>
             <div class="text" style="margin-top: 0px; margin-left:0px; text-align: left; padding:10px; margin-right: 30px; margin-left:10px;">
-              <h2><%= "#{dog.name.capitalize}, #{dog.age}"%></h2>
+              <h2><%= link_to "#{dog.name.capitalize}, #{dog.age} #{dog.size}", show_profile_path(match.matchee) %></h2>
             </div>
             <ul style="text-align:left; margin-left:10px; text-align:left; padding-left:0px; margin-left:20px;">
             <li style="list-style-type:none;"><iconify-icon icon="bi:gender-ambiguous"></iconify-icon><%="#{dog.gender.capitalize}"%></li>
             <li style="list-style-type:none;"><iconify-icon icon="fa6-solid:dog"></iconify-icon><%="#{dog.breed.capitalize}"%></li>
             </ul>
             <div class="tinder--buttons" style="display: flex; align-items: center; justify-content: center;">
-              <%= link_to create_match_path(match, match:{status: "declined", id: 'nope', matchee_id: match.matchee_id, matcher_id: match.matcher_id}), data: {turbo_method: "POST"} do %>
+              <%= link_to create_match_path(match, match:{status: "declined", id: 'nope', matchee_id: match.matchee_id, matcher_id: match.matcher_id}, gender: params[:gender], size: params[:size]), data: {turbo_method: "POST"} do %>
                 <button><i class="fa fa-remove" style="padding:20px;"></i></button>
               <% end %>
 
-              <%= link_to create_match_path(match, match:{status: "pending", id: 'love', matchee_id: match.matchee_id, matcher_id: match.matcher_id}), data: {turbo_method: "POST"} do %>
+              <%= link_to create_match_path(match, match:{status: "pending", id: 'love', matchee_id: match.matchee_id, matcher_id: match.matcher_id}, gender: params[:gender], size: params[:size]), data: {turbo_method: "POST"} do %>
                 <button><i class="fa fa-heart" style="padding:20px;"></i></button>
               <% end %>
             </div>

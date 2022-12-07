@@ -97,8 +97,8 @@ const initSwipeCards = () => {
   var nopeListener = createButtonListener(false);
   var loveListener = createButtonListener(true);
 
-  //nope.addEventListener('click', nopeListener);
-  //love.addEventListener('click', loveListener);
+  // nope.addEventListener('click', nopeListener);
+  // love.addEventListener('click', loveListener);
 
 }
 

@@ -96,7 +96,7 @@ end
 
 puts "Start creating random faker users, dogs & matches"
 num = 0
-25.times do
+15.times do
   num += 1
   name = Faker::FunnyName.name
   details = {
