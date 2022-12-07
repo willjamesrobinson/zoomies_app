@@ -8,7 +8,9 @@
     "@popperjs/core": "^2.11.6",
     "@rails/actioncable": "^7.0.4",
     "bootstrap": "^5.2.3",
+    "flatpickr": "^4.6.13",
     "hammerjs": "^2.0.8",
+    "stimulus-flatpickr": "^1.4.0",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0"
   },

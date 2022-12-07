@@ -1,8 +1,17 @@
 <div class="container">
 <h1>DoggyDates#new</h1>
   <%= simple_form_for [@match, @doggy_date] do |f| %>
-  <%= f.datetime_field :date %>
+  <%= f.input :date,
+      data: {
+      controller: "flatpickr",
+      flatpickr_date_format: "d-m-Y",
+      flatpickr_min_date: Time.zone.now
+    } %>
   <%= f.input :location %>
+  <div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   <%= f.submit %>
   <% end %>
 </div>
