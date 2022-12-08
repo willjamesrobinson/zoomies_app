@@ -7,7 +7,7 @@
         data-match-subscription-match-id-value="<%= @match.id %>"
         data-match-subscription-current-user-id-value="<%= current_user.id %>"
       >
-        <h1><%= @match.matcher == current_user ? @match.matchee.first_name : @match.matcher.first_name %></h1>
+        <h1><%= @match.matcher == current_user ? (link_to "#{@match.matchee.first_name}", show_profile_path(@match.matchee)) : (link_to "#{@match.matcher.first_name}", show_profile_path(@match.matcher)) %></h1>
 
 
         <div class="content bootstrap snippets bootdey decor-default a-chat chat-body" style="outline: none;">
