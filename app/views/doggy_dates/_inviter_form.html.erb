@@ -1,12 +1,18 @@
-<div id="message-<%= message.id %>">
-  <small>
-    <strong><%= message.user.first_name %></strong>
-    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-  </small>
-  <p><%= message.content %></p>
-  <%# If @doggy_date attached? && message.user != current_user  %>
-  <%# Render card with an accept/decline path to pending %>
-  <%# elseif @doggy_date attached? && message.user == current_user  %>
-  <%# Render same card without accept/decline path %>
-  <p>Invite Sent!</p>
+<div>
+  <div class="answer <%= message.user == current_user ? "right" : "left" %>" id="message-<%= message.id %>">
+    <div class="avatar">
+      <% if message.user.photo.attached? %>
+        <%= cl_image_tag(message.user.photo.key, :transformation=>[{:gravity=>"face", :height=>400, :width=>400, :crop=>"crop"}, {:radius=>"max"}, {:width=>70, :crop=>"scale"}]) %>
+      <% else %>
+        <%= image_tag "person.png", width: 70, class: "rounded-circle"  %>
+      <% end %>
+    </div>
+    <div class="name"><%= message.user.first_name %></div>
+    <div class="text d-flex justify-content-left">
+      <div>
+        <h4 class='mt-2'>Invite Sent!</h4>
+      </div>
+    </div>
+    <div class="time"><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></div>
+  </div>
 </div>
