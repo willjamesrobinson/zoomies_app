@@ -1,7 +1,5 @@
 <h5>Search Preferences</h5>
 
-
-
 <div>
   <form action="/matches" method="get">
     <ul>
@@ -10,7 +8,7 @@
       <input id="distance" type="range" value="10" min="1" max="20" step="1" oninput="this.nextElementSibling.value = this.value">
 <output>10</output>
     </li>
-      <li>
+      <%# <li>
       <h6>Age</h6>
           <div class="tag-item">
             <input class="settings-button" id="age_puppy" name="age" type="checkbox" value="puppy" />
@@ -20,7 +18,7 @@
             <input class="settings-button" id="age_senior" name="age" type="checkbox" value="senior" />
             <label for="age_senior">Senior</label>
           </div>
-      </li>
+      </li> %>
       <li>
         <h6>Gender</h6>
           <div class="tag-item">
@@ -40,22 +38,6 @@
             <input class="settings-button" id="size_large" name="size[]" type="checkbox" value="large" />
             <label for="size_large">Large</label>
           </div>
-      </li>
-      <li>
-        <h6>Personality</h6>
-          <div class="tag-item">
-            <input class="settings-button" id="personality_slow" name="personality[]" type="checkbox" value="slow" />
-            <label for="personality_slow">Slow</label>
-            <input class="settings-button" id="personality_shy" name="personality[]" type="checkbox" value="shy" />
-            <label for="personality_shy">Shy</label>
-            <input class="settings-button" id="personality_playful" name="personality[]" type="checkbox" value="playful" />
-            <label for="personality_playful">Playful</label>
-            <input class="settings-button" id="personality_rough" name="personality[]" type="checkbox" value="rough" />
-            <label for="personality_rough">Rough</label>
-            <input class="settings-button" id="personality_friendly" name="personality[]" type="checkbox" value="friendly" />
-            <label for="personality_friendly">Friendly</label>
-            <input class="settings-button" id="personality_energetic" name="personality[]" type="checkbox" value="energetic" />
-            <label for="personality_energetic">Energetic</label>
       </li>
     </ul>
     <div>
