@@ -1,4 +1,11 @@
-.banner {
+.containerr {
+  background-image: url(https://r1.ilikewallpaper.net/iphone-wallpapers/download/38755/Labrador-Sunset-iphone-wallpaper-ilikewallpaper_com.jpg);
+  width: 100%;
+  height: 850px;
+  background-position: center;
+}
+
+.homepage {
   align-items: center;
   // display: flex;
   object-fit: cover;
@@ -6,8 +13,23 @@
   height: 850px;
   margin: 0 auto;
   margin-bottom: -100px;
+  justify-content: center;
+  display: flex;
+  align-items: baseline;
 }
 
-.banner img {
-  width: 350px;
+.homepage img {
+  width: 390px;
+}
+
+.logo img {
+  width: 365px;
+  display: flex;
+  padding-top: 50px;
+  padding-bottom: 25px;
+  padding-left: 30px;
+}
+
+.logo a {
+  text-align: center;
 }

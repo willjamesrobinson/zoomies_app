@@ -1,7 +1,19 @@
 
 <%# <h1 class='red'>Welcome to Zoomies!</h1> %>
-<div class="banner">
-  <%= image_tag("lab.jpg") %>
+<div class="containerr">
+<div class="logo">
+  <div class="image">
+    <%= image_tag("zoomies-thick.png") %>
+  </div>
+  <% if user_signed_in? %>
+  <% else %>
+  <div class="buttons" style="text-align: center;">
+    <%= link_to "Login", new_user_session_path, class: "btn btn-dark"  %>
+    <%= link_to "Sign up", '/users/sign_up', class: "btn btn-dark" %>
+  </div>
 </div>
-
+<% end %>
+</div>
 <%# <p>Thanks for visiting</p> %>
+<%# <button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button> %>
