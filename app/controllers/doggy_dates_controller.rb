@@ -54,9 +54,9 @@ class DoggyDatesController < ApplicationController
         lat: dog_park.latitude,
         lng: dog_park.longitude,
         info_window: render_to_string(partial: "info_window", locals: {dog_park: dog_park}),
-        image_url: helpers.asset_url("content: url('https://api.iconify.design/teenyicons/paw-solid.svg?color=%23f0bb62');")
+        image_url: helpers.asset_url("green_paw.png")
         }
-    end
+      end
   end
 
   def create
