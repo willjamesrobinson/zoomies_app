@@ -1,5 +1,5 @@
 .mapboxgl-popup {
-  max-width: 150px;
+  width: 150px;
 }
 
 .mapboxgl-popup-content {
@@ -10,6 +10,9 @@
 
 .mapboxgl-popup-content img {
   object-fit: cover;
-  border-color: black;
-  border: 1px, solid
+  border: 1px solid black;
+}
+
+.mapboxgl-popup-content p {
+ margin-bottom: 0;
 }

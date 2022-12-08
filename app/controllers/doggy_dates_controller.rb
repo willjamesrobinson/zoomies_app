@@ -27,17 +27,19 @@ class DoggyDatesController < ApplicationController
   def new
     @match = Match.find(params[:match_id])
     @doggy_date = DoggyDate.new
-    get_park = HTTP.get("https://api.mapbox.com/geocoding/v5/mapbox.places/park.json?type=poi&proximity=#{current_user.longitude},#{current_user.latitude}&access_token=#{ENV['MAPBOX_API_KEY']}")
+    get_park = HTTP.get("https://api.mapbox.com/geocoding/v5/mapbox.places/dog&park.json?type=poi&proximity=#{current_user.longitude},#{current_user.latitude}&access_token=#{ENV['MAPBOX_API_KEY']}")
     get_park_parsed = JSON.parse(get_park)
     features = get_park_parsed["features"]
     # for loop needed in page to grab co-ordinates
     park_array = []
     for i in (1..5)
       park = features[i-1]
-      name = park["place_name"]
+      address_name = park["place_name"]
+      easy_name = park["text"]
       coord = park.dig "geometry", "coordinates"
       park = Park.create(
-        address: name,
+        address: address_name,
+        name: easy_name,
         latitude: coord[1],
         longitude: coord[0]
       )
@@ -51,7 +53,8 @@ class DoggyDatesController < ApplicationController
       {
         lat: dog_park.latitude,
         lng: dog_park.longitude,
-        info_window: render_to_string(partial: "info_window", locals: {dog_park: dog_park})
+        info_window: render_to_string(partial: "info_window", locals: {dog_park: dog_park}),
+        image_url: helpers.asset_url("content: url('https://api.iconify.design/teenyicons/paw-solid.svg?color=%23f0bb62');")
         }
     end
   end
