@@ -10,9 +10,13 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <script src="https://code.iconify.design/iconify-icon/1.0.2/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&family=Noto+Sans+JP:wght@500&display=swap" rel="stylesheet">
   </head>
 
   <body>
+  <% if user_signed_in? %>
     <nav class="navbar navbar-expand-lg" style="background-color: #F0BB62;">
       <div class="container-fluid d-flex">
         <div class="justify-content-center">
@@ -38,20 +42,23 @@
         </div>
       </div>
     </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% else %>
+
+    <% end %>
+    <p class="notice m-0"><%= notice %></p>
+    <p class="alert m-0"><%= alert %></p>
     <%= render "shared/flashes" %>
 
     <%= yield %>
     <div class="py-5 my-3"> </div>
-
-    <div class="container-fluid fixed-bottom">
+    <% if user_signed_in? %>
+    <div class="container-fluid fixed-bottom px-0">
       <div class = "grass text-center justify-content-center flex-wrap" style ="">
-      <%= image_tag("grass.png", width: "500px", height: "30px", crop: "fill") %>
+      <%= image_tag("grass.png", width: "100%", height: "30px", crop: "fill") %>
       </div>
       <nav class="navbar navbar-expand-sm d-flex flex-wrap justify-content-center">
         <ul class="list-inline d-flex align-items-top mb-1">
-          <% if user_signed_in? %>
+
             <li class="nav-item">
               <%= link_to show_profile_path(current_user.id), class: "nav-link" do %>
               <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-top:7px;">
@@ -105,12 +112,9 @@
               <% end %>
             </li>
           <% else %>
-            <li class="nav-item">
-              <%= link_to "Sign up", '/users/sign_up', class: "nav-link" %>
-            </li>
-          <% end %>
         </ul>
       </nav>
     </div>
+    <% end %>
   </body>
 </html>
