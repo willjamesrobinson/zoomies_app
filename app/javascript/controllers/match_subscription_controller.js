@@ -11,16 +11,24 @@ export default class extends Controller {
       { received: data => this.#insertMessageAndScrollDown(data) }
     )
     console.log(`Subscribed to the chatroom with the id ${this.matchIdValue}.`)
+    this.element.scrollTo(0, this.element.scrollHeight)
   }
     #insertMessageAndScrollDown(data) {
-      console.log(data)
+      // console.log(data)
       const html = data.html
       const isSender = data.senderId === this.currentUserIdValue
       const position = isSender ? 'right' : 'left'
       let updatedHtml = html.replace( /(right|left)/, position);
       this.messagesTarget.insertAdjacentHTML("beforeend", updatedHtml)
-      this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
+      console.log(this.messagesTarget)
+      this.element.scrollTo(0, this.element.scrollHeight)
+      // this.element.scrollTop = this.element.scrollHeight;
   }
+
+  // var objDiv = document.getElementById("your_div");
+  // objDiv.scrollTop = objDiv.scrollHeight;
+
+  // this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
   resetForm(event) {
     event.target.reset()
   }
