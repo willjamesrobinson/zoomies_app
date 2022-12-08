@@ -2,9 +2,9 @@
 <h1>DoggyDates#new</h1>
   <%= simple_form_for [@match, @doggy_date] do |f| %>
   <%= f.datetime_field :date %>
-  <%= f.input :location,
-    input_html: {data: {map_controller_target: "address"}, class: "d-none"},
-    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+  <%= f.input :location %>
+    <%# # input_html: {data: {map_controller_target: "address"}, class: "d-none"}, %>
+    <%# # wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
     <div style="width: 100%; height: 600px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"

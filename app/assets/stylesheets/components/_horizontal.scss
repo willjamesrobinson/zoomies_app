@@ -16,6 +16,7 @@
   padding: 17px;
   background-color: rgba(81,146,89,0.1);
   border-radius: 20px;
+  padding-bottom: 0px;
 }
 
 .wrapper .item img {
@@ -24,4 +25,12 @@
 
 .wrapper .item a {
   color: black;
+}
+
+.wapper .item p {
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
 }
