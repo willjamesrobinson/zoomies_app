@@ -1,11 +1,13 @@
 <div class="container mb-5  pt-3">
   <h1>Find a Match</h1>
+
   <%# Can only start swiping if has dog %>
-
-<button class="search-button">
-    <%= link_to "Search Preferences", settings_path %>
+  <div class="d-flex justify-content-end">
+  <button class="btn btn-search">
+      <%= link_to "Preferences", settings_path %>
+      <%= image_tag("cog.svg", width: "22px") %>
   </button>
-
+  </div>
   <% if current_user.dogs.empty? %>
     <p><strong>Add your dog(s) to your <%= link_to "profile", show_profile_path(current_user.id) %> before you look for matches!</strong></p>
   <% else %>

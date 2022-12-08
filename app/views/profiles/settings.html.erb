@@ -1,66 +1,39 @@
-<h5>Search Preferences</h5>
-
-<div>
-  <form action="/matches" method="get">
-    <ul>
-    <li>
-      <label for="distance" class="form-label">Distance from me:</label><br>
-      <input id="distance" type="range" value="10" min="1" max="20" step="1" oninput="this.nextElementSibling.value = this.value">
-<output>10</output>
-    </li>
-      <%# <li>
-      <h6>Age</h6>
-          <div class="tag-item">
-            <input class="settings-button" id="age_puppy" name="age" type="checkbox" value="puppy" />
-            <label for="age_puppy">Puppy</label>
-            <input class="settings-button" id="age_adult" name="age" type="checkbox" value="adult" />
-            <label for="age_adult">Adult</label>
-            <input class="settings-button" id="age_senior" name="age" type="checkbox" value="senior" />
-            <label for="age_senior">Senior</label>
-          </div>
-      </li> %>
-      <li>
-        <h6>Gender</h6>
-          <div class="tag-item">
-            <input class="settings-button" id="gender_female" name="gender[]" type="checkbox" value="female" />
-            <label for="gender_female">Female</label>
-            <input class="settings-button" id="gender_male" name="gender[]" type="checkbox" value="male" />
-            <label for="gender_male">Male</label>
-          </div>
-      </li>
-      <li>
-        <h6>Size</h6>
-          <div class="tag-item">
-            <input class="settings-button" id="size_small" name="size[]" type="checkbox" value="small" />
-            <label for="size_small">Small</label>
-            <input class="settings-button" id="size_medium" name="size[]" type="checkbox" value="medium" />
-            <label for="size_medium">Medium</label>
-            <input class="settings-button" id="size_large" name="size[]" type="checkbox" value="large" />
-            <label for="size_large">Large</label>
-          </div>
-      </li>
-    </ul>
-    <div>
-      <button>
-      <input type="submit" value="Submit">
-      </button>
-      <br>
-      <button>
-      <%= submit_tag "Reset", :class => "inputsubmit", :type => "reset" %>
-      </button>
-    </div>
+<div class="d-flex flex-column">
+  <div class="d-inline-flex p-2 justify-content-center">
+    <h1>Doggy Preferences</h1>
+  </div>
+  <div class="d-inline-flex p-2">
+    <form action="/matches" method="get">
+    <label for="distance" class="form-label"><h5>Distance from me (km)</h5></label>
+    <br>
+    <input id="distance" type="range" value="10" min="1" max="20" step="1" oninput="this.nextElementSibling.value = this.value">
+    <output>10</output>
+  </div>
+  <div class="d-flex flex-column p-2 mb-2">
+    <h5>Gender</h5>
+      <div class="d-inline-flex">
+        <input class="settings-button" id="gender_female" name="gender[]" type="checkbox" value="female" />
+        <label for="gender_female">Female</label>
+        <input class="settings-button" id="gender_male" name="gender[]" type="checkbox" value="male" />
+        <label for="gender_male">Male</label>
+      </div>
+  </div>
+  <div class="d-flex flex-column p-2 mb-2">
+    <h5>Size</h5>
+      <div class="d-inline-flex p-2">
+        <input class="settings-button" id="size_small" name="size[]" type="checkbox" value="small" />
+        <label for="size_small">Small</label>
+        <input class="settings-button" id="size_medium" name="size[]" type="checkbox" value="medium" />
+        <label for="size_medium">Medium</label>
+        <input class="settings-button" id="size_large" name="size[]" type="checkbox" value="large" />
+        <label for="size_large">Large</label>
+      </div>
+  </div>
+  <div class="d-flex flex-column justify-content-center">
+    <input class="btn btn-submit" type="submit" value="Submit">
+  </div>
+  <div>
+    <%= submit_tag "Reset", :class => "inputsubmit", :type => "reset" %>
+  </div>
   </form>
 </div>
-
-
-<button><h3>Log Out</h3></button>
-
-
-<%# var slider = document.getElementById("myRange");
-var output = document.getElementById("demo");
-output.innerHTML = slider.value; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-  output.innerHTML = this.value;
-} %>
