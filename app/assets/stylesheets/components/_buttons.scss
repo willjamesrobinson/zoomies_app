@@ -1,5 +1,37 @@
-.search-button {
-  color: darkgreen;
-  background-color: orange;
-  border-radius: 5px;
+.btn-search {
+  color: #F0BB62;
+  background-color: #075e46;
+  border-radius: 12px;
+  text-decoration: none;
+  width: 150px;
+  height: 35px;
+  cursor: pointer;
+}
+
+a {
+  color: #F0BB62;
+}
+
+.btn-submit {
+  color: #F4EEA9;
+  background-color: #519259;
+  border-radius: 12px;
+  width: 200px;
+  height: 35px;
+  cursor: pointer;
+  margin: 20px;
+  padding: 5px;
+}
+
+
+.inputsubmit {
+  color: #F4EEA9;
+  background-color: #519259;
+  border-radius: 12px;
+  width: 60px;
+  height: 35px;
+  cursor: pointer;
+  margin: 20px;
+  padding: 5px;
+  border: none;
 }
