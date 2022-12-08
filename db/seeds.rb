@@ -126,7 +126,7 @@ file = URI.open("https://avatars.githubusercontent.com/u/34521157?v=4")
 george.photo.attach(io: file, filename: "#{george.first_name}.jpg", content_type: "image/jpg")
 print "George... "
 # Ben
-ben = User.new(email: "seed_user_ben@ymail.com", password: "123456", age: 40, gender: "male", first_name: "Ben", overview: "Rocky is gentle and likes to walk and get pats. We're looking for other calm dogs", address: LOCATION.sample)
+ben = User.new(email: "seed_user_ben@ymail.com", password: "123456", age: 40, gender: "male", first_name: "Ben", overview: "Salvus is gentle and likes to walk and get pats. We're looking for other calm dogs", address: LOCATION.sample)
 file = URI.open("https://avatars.githubusercontent.com/u/40282417?v=4")
 ben.photo.attach(io: file, filename: "#{ben.first_name}.jpg", content_type: "image/jpg")
 print "Ben... "
@@ -297,12 +297,12 @@ lenny_file = URI.open("https://res.cloudinary.com/dtcaswh8v/image/upload/v167051
 lenny.photos.attach(io: lenny_file, filename: "#{lenny.name}2.jpg", content_type: "image/jpg")
 lenny.user = george
 print "Lenny... "
-# Rocky
-rocky = Dog.new(name: "Rocky", age: 5, gender: "male", size: "large", breed: "collie", personality: PERSONALITY.sample(3))
-rocky_file = URI.open("https://res.cloudinary.com/dtcaswh8v/image/upload/v1670517479/tyu3bkrevpxg6zrr3aim.jpg")
-rocky.photos.attach(io: rocky_file, filename: "#{rocky.name}1.jpg", content_type: "image/jpg")
-rocky.user = ben
-print "Rocky... "
+# Salvus
+salvus = Dog.new(name: "Salvus", age: 5, gender: "male", size: "large", breed: "collie", personality: PERSONALITY.sample(3))
+salvus_file = URI.open("https://res.cloudinary.com/dtcaswh8v/image/upload/v1670517479/tyu3bkrevpxg6zrr3aim.jpg")
+salvus.photos.attach(io: salvus_file, filename: "#{salvus.name}1.jpg", content_type: "image/jpg")
+salvus.user = ben
+print "Salvus... "
 # Simba
 simba = Dog.new(name: "Simba", age: 0, gender: "male", size: "small", breed: "teddy bear", personality: PERSONALITY.sample(3))
 simba_file = URI.open("https://res.cloudinary.com/dtcaswh8v/image/upload/v1670519606/kphla9p8j2xsgmhqghtt.jpg")
@@ -327,7 +327,7 @@ roach_file = URI.open("https://images.unsplash.com/photo-1662317167813-fdc305e87
 roach.photos.attach(io: roach_file, filename: "#{roach.name}2.jpg", content_type: "image/jpg")
 roach.user = geralt
 puts "Roach... "
-if lenny.save && rocky.save && simba.save && apple.save && roach.save
+if lenny.save && salvus.save && simba.save && apple.save && roach.save
   puts "----------Created George, Ben, Craig, Ryan & Geralt's dogs"
 else
   puts "ERROR creating George, Ben, Craig, Ryan & Geralt's dogs"
