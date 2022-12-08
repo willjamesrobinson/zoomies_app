@@ -3,12 +3,12 @@ require 'http'
 require 'google_search_results'
 class DoggyDatesController < ApplicationController
   def index
-    @doggy_dates = current_user.doggy_dates
+    @doggy_dates = DoggyDate.all
     @pending_dates = @doggy_dates.select do |pending|
-      pending.status == "pending"
+      pending.status == "pending" && current_user.doggy_dates
     end
     @accepted_dates = @doggy_dates.select do |accepted|
-      accepted.status == "accepted"
+      accepted.status == "accepted" && current_user.doggy_dates
     end
   end
 

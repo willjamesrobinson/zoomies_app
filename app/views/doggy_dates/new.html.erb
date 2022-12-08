@@ -9,6 +9,8 @@
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-  <%= f.submit "Schedule your DoggyDate" %>
+    <div class="justify-content-center">
+      <%= f.submit "Schedule your DoggyDate", class: "mt-4" %>
+    </div>
   <% end %>
 </div>

@@ -2,7 +2,7 @@
 <div class="container">
 <h1 style="text">Doggy Dates</h1>
   <% @pending_dates.each do |pd| %>
-    <div class="card doggy" style="margin: 0 auto; margin-bottom:20px;">
+    <div class="card doggy" style="margin: 0 auto; margin-bottom:20px; border-radius: 20px;">
       <div class="row">
         <div class="card-body col-9">
           <h5 class="card-title" style="margin-left: 12px;">
@@ -20,7 +20,43 @@
             <path d="M7 3v4" />
             <path d="M3 11h16" />
             <path d="M18 16.496v1.504l1 1" />
-          </svg><%= "#{pd.date}" %></h5>
+            <% str_fmt = "%s-%s-%s" %>
+            <% str = pd.date.split("T")[0] %>
+          </svg><%= "#{str_fmt % [str[8,2], str[5,2], str[0,4]]}, #{pd.date.split("T")[1]}" %></h5>
+          <h5 class="card-text" style="margin-left: 12px; padding-right: 5px;"><iconify-icon icon="material-symbols:park" style="margin-right:5px;"></iconify-icon><%= "#{pd.location}" %></h5>
+        </div>
+        <div class="card-body col-3">
+
+            <div class="card-link" style="position: absolute; right: 7px;top: 7px; color:black;"><iconify-icon icon="oi:question-mark" width="32"></iconify-icon></div>
+            <%= link_to doggy_date_path(pd), data: {turbo_method: :delete} do %>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6" style="height:30px; position:absolute; right: 9px; bottom: 9px; color: black;">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+              </svg>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  <%end%>
+  <% @accepted_dates.each do |pd| %>
+    <div class="card doggy" style="margin: 0 auto; margin-bottom:20px; border-radius: 20px;">
+      <div class="row">
+        <div class="card-body col-9">
+          <h5 class="card-title" style="margin-left: 12px;">
+          <%if current_user.id == pd.match.matcher_id %>
+            <iconify-icon icon="fa-solid:dog"></iconify-icon> <%= "#{pd.match.matchee.first_name}" %>
+          <% else %>
+            <iconify-icon icon="fa-solid:dog"></iconify-icon> <%= "#{pd.match.matcher.first_name}" %>
+          <% end %></h5>
+          <h5 class="card-subtitle mb-2" style="margin-left: 12px;">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="26" height="26" viewBox="0 0 24 24" stroke-width="1.2" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round" style="margin-top:7px;  vertical-align:bottom; padding-right: 5px;">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+            <circle cx="18" cy="18" r="4" />
+            <path d="M15 3v4" />
+            <path d="M7 3v4" />
+            <path d="M3 11h16" />
+            <path d="M18 16.496v1.504l1 1" />
+          </svg><%= "#{pd.date.split("T")[0]}, #{pd.date.split("T")[1]}" %></h5>
           <h5 class="card-text" style="margin-left: 12px; padding-right: 5px;"><iconify-icon icon="material-symbols:park" style="margin-right:5px;"></iconify-icon><%= "#{pd.location}" %></h5>
         </div>
         <div class="card-body col-3">
@@ -31,9 +67,8 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
               </svg>
             <% end %>
-
         </div>
       </div>
     </div>
-    <%end%>
+  <%end%>
 </div>
