@@ -196,3 +196,10 @@ body {
 .card__avatar img {
   border-radius:50%;
 }
+
+.chatroom {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
