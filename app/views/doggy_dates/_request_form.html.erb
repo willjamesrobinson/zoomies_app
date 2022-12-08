@@ -10,7 +10,7 @@
     <div class="name"><%= message.user.first_name %></div>
     <div>
       <div>
-        <div class="card doggy" style="margin: 0 auto; margin-bottom:20px; border-radius: 20px;">
+        <div class="card doggy" style="margin: 0 auto; margin-bottom:20px; border-radius: 20px; opacity: 0.9;">
           <div class="row">
             <div class="card-body col-9">
               <h5 class="card-title" style="margin-left: 12px;">
@@ -43,9 +43,11 @@
                 <% end %>
             </div>
           </div>
+          <div class="d-inline-flex justify-content-between" >
+            <p><%= link_to "Accept?", match_doggy_date_path(match, message.doggy_date, doggy_date:{ status: "accepted" }), data: {turbo_method: "PATCH"} %></p>
+            <p><%= link_to "Decline?", match_doggy_date_path(match, message.doggy_date, doggy_date:{ status: "declined" }), data: {turbo_method: "PATCH"} %></p>
+          </div>
         </div>
-        <p><%= link_to "Accept?", match_doggy_date_path(match, message.doggy_date, doggy_date:{ status: "accepted" }), data: {turbo_method: "PATCH"} %></p>
-        <p><%= link_to "Decline?", match_doggy_date_path(match, message.doggy_date, doggy_date:{ status: "declined" }), data: {turbo_method: "PATCH"} %></p>
       </div>
     </div>
     <div class="time"><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></div>
