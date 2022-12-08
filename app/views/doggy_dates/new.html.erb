@@ -1,10 +1,9 @@
 <div class="container">
 <h1>DoggyDates#new</h1>
   <%= simple_form_for [@match, @doggy_date] do |f| %>
-  <%= f.input :date, as: :string,
-      input_html: { data: { flatpickr_target: "date" } } %>
+  <%= f.datetime_field :date %>
   <%= f.input :location,
-    input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+    input_html: {data: {map_controller_target: "address"}, class: "d-none"},
     wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
     <div style="width: 100%; height: 600px;"
     data-controller="map"

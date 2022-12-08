@@ -17,29 +17,24 @@ User.destroy_all
 puts "Seeding started"
 PERSONALITY = ["friendly", "shy", "playful", "energetic", "slow", "rough"]
 LOCATION = ["Richmond, Melbourne", "Fitzroy, Melbourne", "Brunswick, Melbourne", "Kew, Melbourne", "Toorak, Melbourne", "Carlton, Melbourne", "Hawthorn, Melbourne", "Brunswick, Melbourne", "Brighton, Melbourne", "Carlton North, Melbourne", "South Yarra, Melbourne", "Collingwood, Melbourne"]
-bob = User.new(email: "seed_user_bob@ymail.com", password: "123456", age: 55, gender: "male", first_name: "Bob", overview: "Cadbury is a good boy, he gets along with all dogs. He loves walks and playtime.")
-file = URI.open("https://images.unsplash.com/photo-1590074251929-76f7c465a3bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-address: LOCATION.sample)
+bob = User.new(email: "seed_user_bob@ymail.com", password: "123456", age: 55, gender: "male", first_name: "Bob", overview: "Cadbury is a good boy, he gets along with all dogs. He loves walks and playtime.", address: LOCATION.sample)
+file = URI.open("https://images.unsplash.com/photo-1590074251929-76f7c465a3bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80")
 bob.photo.attach(io: file, filename: "#{bob.first_name}.jpg", content_type: "image/jpg")
 print "Bob... "
-betty = User.new(email: "seed_user_betty@ymail.com", password: "654321", age: 44, gender: "female", first_name: "Betty", overview: "Fluff and Fuzz are my cute little angels who like gentle walks and cuddles. They are looking for some small dog friends.")
-file = URI.open("https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-address: LOCATION.sample)
+betty = User.new(email: "seed_user_betty@ymail.com", password: "654321", age: 44, gender: "female", first_name: "Betty", overview: "Fluff and Fuzz are my cute little angels who like gentle walks and cuddles. They are looking for some small dog friends.", address: LOCATION.sample)
+file = URI.open("https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
 betty.photo.attach(io: file, filename: "#{betty.first_name}.jpg", content_type: "image/jpg")
 print "Betty... "
-george = User.new(email: "seed_user_george@ymail.com", password: "123456", age: 27, gender: "male", first_name: "George", overview: "Egg likes to nap. When he is not napping he would like to meet other dogs to sniff around with in the park.")
-file = URI.open("https://images.unsplash.com/photo-1601912982742-26a940afaa5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
-address: LOCATION.sample)
+george = User.new(email: "seed_user_george@ymail.com", password: "123456", age: 27, gender: "male", first_name: "George", overview: "Egg likes to nap. When he is not napping he would like to meet other dogs to sniff around with in the park.", address: LOCATION.sample)
+file = URI.open("https://images.unsplash.com/photo-1601912982742-26a940afaa5d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80")
 george.photo.attach(io: file, filename: "#{george.first_name}.jpg", content_type: "image/jpg")
 print "George... "
-talina = User.new(email: "seed_user_talina@ymail.com", password: "123456", age: 30, gender: "female", first_name: "Talina", overview: "Ruby loves to run. We're looking for other fast dogs to run with.")
-file = URI.open("https://images.unsplash.com/photo-1564564295391-7f24f26f568b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80",
-address: LOCATION.sample)
+talina = User.new(email: "seed_user_talina@ymail.com", password: "123456", age: 30, gender: "female", first_name: "Talina", overview: "Ruby loves to run. We're looking for other fast dogs to run with.", address: LOCATION.sample)
+file = URI.open("https://images.unsplash.com/photo-1564564295391-7f24f26f568b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80")
 talina.photo.attach(io: file, filename: "#{talina.first_name}.jpg", content_type: "image/jpg")
 print "Talina... "
-matt = User.new(email: "seed_user_matthieu@ymail.com", password: "123456", age: 25, gender: "male", first_name: "Matthieu", overview: "Croissant is fierce but loyal. He is looking for other big sturdy dogs to befriend (no lapdogs).")
-file = URI.open("https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80",
-address: LOCATION.sample)
+matt = User.new(email: "seed_user_matthieu@ymail.com", password: "123456", age: 25, gender: "male", first_name: "Matthieu", overview: "Croissant is fierce but loyal. He is looking for other big sturdy dogs to befriend (no lapdogs).", address: LOCATION.sample)
+file = URI.open("https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80")
 matt.photo.attach(io: file, filename: "#{matt.first_name}.jpg", content_type: "image/jpg")
 puts "Matt... "
 if bob.save && betty.save && george.save && talina.save && matt.save
@@ -118,7 +113,7 @@ num = 0
   3.times do
     personality = personality_sample.sample
     personality_array << personality
-    personality_sample.remove(personality)
+    personality_sample.delete(personality)
   end
   dog_details = {
     name: Faker::Creature::Dog.name,
