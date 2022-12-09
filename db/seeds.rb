@@ -186,11 +186,11 @@ end
 # Cadbury
 cadbury = Dog.new(name: "Cadbury", age: 10, gender: "male", size: "large", breed: "labrador", personality: ["friendly", "energetic", "playful"])
 
-if bob.save && betty.save && rob.save && talina.save && matt.save
+if bob.save && betty.save && talina.save && matt.save
   # && ariani.save
-  puts "Created users Bob, Betty, Rob, Talina, Matt, Ariani"
+  puts "Created users Bob, Betty, Talina, Matt, Ariani"
 else
-  puts "ERROR creating Bob, Betty, Rob, Talina, Matt, Ariani"
+  puts "ERROR creating Bob, Betty, Talina, Matt, Ariani"
 end
 
 cadbury = Dog.new(name: "Cadbury", age: 10, gender: "male", size: "medium", breed: "labrador", personality: ["friendly", "energetic", "playful"])
@@ -251,11 +251,6 @@ if cadbury.save && fluff.save && fuzz.save && egg.save && ruby.save && croissant
   puts "----------Created Bob, Betty, Anja, Talina, Matt's dogs"
 else
   puts "ERROR creating Bob, Betty, Anja, Talina, Matt's dogs"
-
-if cadbury.save && fluff.save && fuzz.save && egg.save && ruby.save && croissant.save
-  puts "Created Bob, Betty, Rob, Talina, Matt & Ariani's dogs"
-else
-  puts "ERROR creating Bob, Betty, Rob, Talina, Matt & Ariani's dogs"
 end
 
 #----------DOGS 7-11----------

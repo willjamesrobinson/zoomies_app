@@ -100,6 +100,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_08_040719) do
 
   create_table "parks", force: :cascade do |t|
     t.string "address"
+    t.string "name"
     t.float "latitude"
     t.float "longitude"
     t.datetime "created_at", null: false

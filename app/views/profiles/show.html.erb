@@ -1,4 +1,4 @@
-<div class="container pb-5 pt-3 mb-5" style="background-color:white;">
+<div class="container pb-5 pt-3 mb-5">
   <h1 class="text-center fw-semibold text-dark">
     <% @user.dogs.each do |dog| %>
       <% if dog == @user.dogs.first %>
@@ -47,7 +47,7 @@
         </button>
       </div>
       <%# Dog Details %>
-      <div class="row p-2">
+      <div class="row p-2 m-0" style="background-color: white;">
         <div class="col">
           <h3 class="py-1" ><%= dog.name.capitalize %>, <%= dog.age %>
           <% if dog.gender.downcase == "female" %>
@@ -70,7 +70,7 @@
         </div>
       </div>
       <% if @user == current_user %>
-      <div class="d-flex justify-content-center">
+      <div class="d-flex pb-3 justify-content-center"  style="background-color:white;">
         <button type="button" class="btn btn-primary text-white mx-1"><%= link_to "Edit #{dog.name.split.first.capitalize}", edit_dog_path(dog), class: "text-decoration-none text-reset" %></button>
         <button type="button" class="btn btn-primary text-white mx-1"><%= link_to "Delete #{dog.name.split.first.capitalize}",
                     dog_path(dog),
@@ -83,7 +83,7 @@
   <% end %>
   </div>
   <%# Owner Details %>
-  <div class="border p-2">
+  <div class="border p-2" style="background-color: white;">
   <div class="d-flex justify-content-center align-items-center">
     <% if @user.photo.attached? %>
       <%= cl_image_tag(@user.photo.key, :transformation=>[{:gravity=>"face", :height=>400, :width=>400, :crop=>"crop"}, {:radius=>"max"}, {:width=>70, :crop=>"scale"}]) %>
