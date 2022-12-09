@@ -1,16 +1,14 @@
 <div class="container">
 <h1>Book a doggy date!</h1>
   <%= simple_form_for [@match, @doggy_date] do |f| %>
-  <%= f.datetime_field :date %>
-  <%= f.input :location %>
-    <%# # input_html: {data: {map_controller_target: "address"}, class: "d-none"}, %>
-    <%# # wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
-    <div style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-    <div class="justify-content-center">
-      <%= f.submit "Schedule your DoggyDate", class: "mt-4" %>
-    </div>
+    <%= f.datetime_field :date %>
+    <%= f.input :location %>
+      <div style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      <div class=" d-flex justify-content-center">
+        <%= f.submit "Schedule your DoggyDate", class: "mt-4 btn btn-primary", style: "border-radius: 10px;" %>
+      </div>
   <% end %>
 </div>
