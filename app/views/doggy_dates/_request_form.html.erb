@@ -1,4 +1,4 @@
-<% if doggydate.status == "pending" %>
+<% if doggy_date.status == "pending" %>
   <div>
     <div class="answer <%= message.user == current_user ? "right" : "left" %>" id="message-<%= message.id %>">
       <div class="avatar">
@@ -40,16 +40,15 @@
               </div>
             </div>
             <div class="d-inline-flex justify-content-around" >
-              <p><%= link_to "Accept?", match_doggy_dates_path(match, message.doggy_date, doggy_date:{ status: "accepted" }), data: {turbo_method: "PATCH"}, class: "btn btn-light mr-2"%></p>
-              <p><%= link_to "Decline?", match_doggy_dates_path(match, message.doggy_date, doggy_date:{ status: "declined" }), data: {turbo_method: "PATCH"}, class: "btn btn-light ml-2" %></p>
+              <p><%= link_to "Accept?", match_doggy_date_path(match, message.doggy_date, doggy_date:{ status: "accepted" }), data: {turbo_method: "PATCH"}, class: "btn btn-light mr-2"%></p>
+              <p><%= link_to "Decline?", match_doggy_date_path(match, message.doggy_date, doggy_date:{ status: "declined" }), data: {turbo_method: "PATCH"}, class: "btn btn-light ml-2" %></p>
             </div>
           </div>
         </div>
       </div>
-      <div class="time"><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></div>
     </div>
   </div>
-<% elsif doggydate.status == "pending" %>
+<% elsif doggy_date.status == "accepted" %>
   <div>
       <div class="answer <%= message.user == current_user ? "right" : "left" %>" id="message-<%= message.id %>">
         <div class="avatar">
