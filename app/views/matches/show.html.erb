@@ -1,12 +1,14 @@
-<div style="position: fixed; height: 90vh; width: 100vw; top: 20; left: 0;">
+<div style="position: fixed; height: 87vh; width: 100vw; top: 20; left: 0;">
   <div class="bg-white w-100 h-100 position-relative">
     <div class="container chatroom"
       data-controller="match-subscription"
       data-match-subscription-match-id-value="<%= @match.id %>"
       data-match-subscription-current-user-id-value="<%= current_user.id %>"
-      style="height: 75%;  overflow: scroll; background-color:white;">
+
+      style="height: 70%;  overflow: scroll; background-color:white;">
+
       <h1><%= @match.matcher == current_user ? (link_to "#{@match.matchee.first_name}", show_profile_path(@match.matchee)) : (link_to "#{@match.matcher.first_name}", show_profile_path(@match.matcher)) %></h1>
-      <div class="content bootstrap snippets bootdey decor-default a-chat chat-body" style="outline: none;">
+      <div class="content bootstrap snippets bootdey decor-default a-chat chat-body pb-5" style="outline: none;">
         <div class="messages" data-match-subscription-target="messages">
           <% @match.messages.each do |message| %>
             <% if message.doggy_date.present? && message.user_id == current_user.id %>
@@ -20,7 +22,7 @@
         </div>
         <div class="answer-add"></div>
       </div>
-      <div class="py-4 bg-white position-absolute bottom-0 w-99" style="height: 220px;">
+      <div class="pb-4 bg-white position-absolute bottom-0 w-99" style="height: 220px;">
         <div class="d-flex">
           <div>
             <%= link_to "Doggy Date?", new_match_doggy_date_path(@match), class:"btn btn-primary flex-shrink-1 me-1", style: "width: 80px" %>
