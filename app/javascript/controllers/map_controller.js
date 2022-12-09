@@ -18,7 +18,10 @@ export default class extends Controller {
     this.#fitMapToMarkers()
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl }))
-  }
+    this.geocoder.on("result", event => this.#setInputValue(event))
+    this.geocoder.on("clear", () => this.#clearInputValue())
+    }
+
   #addMarkersToMap() {
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
@@ -44,4 +47,6 @@ export default class extends Controller {
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
+
+
 }
