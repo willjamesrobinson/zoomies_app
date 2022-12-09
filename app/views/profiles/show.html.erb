@@ -1,4 +1,4 @@
-<div class="container pb-5 pt-3 mb-5">
+<div class="container pb-5 pt-3 mb-5" style="height:100vh;">
   <h1 class="text-center fw-semibold text-dark">
     <% @user.dogs.each do |dog| %>
       <% if dog == @user.dogs.first %>
@@ -19,7 +19,7 @@
   <% end %>
   </ul>
   <%# Dog Tabs Content %>
-  <div class="tab-content border mb-2 pb-2" id="myTabContent">
+  <div class="tab-content mb-2 pb-2" id="myTabContent">
   <% @user.dogs.each_with_index do |dog, index| %>
     <div class="<%= index == 0 ? "tab-pane fade show active" : "tab-pane fade" %>" id="tab-<%=index%>-pane" role="tabpanel" aria-labelledby="tab-<%=index%>" tabindex="0">
       <%# Dog Image Carousel %>
@@ -83,33 +83,32 @@
   <% end %>
   </div>
   <%# Owner Details %>
-  <div class="border p-2" style="background-color: white;">
-  <div class="d-flex justify-content-center align-items-center">
-    <% if @user.photo.attached? %>
-      <%= cl_image_tag(@user.photo.key, :transformation=>[{:gravity=>"face", :height=>400, :width=>400, :crop=>"crop"}, {:radius=>"max"}, {:width=>70, :crop=>"scale"}]) %>
-    <% else %>
-      <%= image_tag "person.png", width: 70, class: "rounded-circle" %>
+  <div class="p-2" style="background-color: white;">
+    <div class="d-flex justify-content-center align-items-center">
+      <% if @user.photo.attached? %>
+        <%= cl_image_tag(@user.photo.key, :transformation=>[{:gravity=>"face", :height=>400, :width=>400, :crop=>"crop"}, {:radius=>"max"}, {:width=>70, :crop=>"scale"}]) %>
+      <% else %>
+        <%= image_tag "person.png", width: 70, class: "rounded-circle" %>
+      <% end %>
+      <h3 class="ps-3"><%= @user.first_name.capitalize %>, <%= @user.age %>
+      <% if @user.gender.downcase == "female" %>
+        <iconify-icon icon="material-symbols:female"></iconify-icon>
+      <% else %>
+        <iconify-icon icon="material-symbols:male"></iconify-icon>
+      <% end %>
+      </h3>
+    </div>
+    <% if @user == current_user %>
+    <div class="d-flex justify-content-center mt-2">
+      <button type="button" class="btn btn-primary text-white mx-1"><%= link_to "Update your profile", edit_user_registration_path, class: "text-decoration-none text-reset" %></button>
+      <button type="button" class="btn btn-primary text-white mx-1"><%= link_to "Add a dog", new_dog_path, class: "text-decoration-none text-reset" %></button>
+    </div>
     <% end %>
-    <h3 class="ps-3"><%= @user.first_name.capitalize %>, <%= @user.age %>
-    <% if @user.gender.downcase == "female" %>
-      <iconify-icon icon="material-symbols:female"></iconify-icon>
-    <% else %>
-      <iconify-icon icon="material-symbols:male"></iconify-icon>
-    <% end %>
-    </h3>
-  </div>
-  <% if @user == current_user %>
-  <div class="d-flex justify-content-center mt-2">
-    <button type="button" class="btn btn-primary text-white mx-1"><%= link_to "Update your profile", edit_user_registration_path, class: "text-decoration-none text-reset" %></button>
-    <button type="button" class="btn btn-primary text-white mx-1"><%= link_to "Add a dog", new_dog_path, class: "text-decoration-none text-reset" %></button>
-  </div>
-  <% end %>
-  </div>
-  <div class="d-flex justify-content-center mt-2">
-        <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" do %>
-          <button class="btn btn-submit text-white mx-1">Dog Out
-            <%= image_tag("logout.svg") %>
-          </button>
-        <% end %>
-  </div>
+    <div class="d-flex justify-content-center mt-2">
+      <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" do %>
+        <button class="btn btn-submit text-white mx-1">Dog Out
+          <%= image_tag("logout.svg") %>
+        </button>
+      <% end %>
+    </div>
 </div>
