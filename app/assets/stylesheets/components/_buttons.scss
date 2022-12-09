@@ -1,12 +1,12 @@
-.btn-search {
-  color: #F0BB62;
-  background-color: #075e46;
-  border-radius: 12px;
-  text-decoration: none;
-  width: 150px;
-  height: 35px;
-  cursor: pointer;
-}
+// .btn-search {
+//   color: #F0BB62;
+//   background-color: #075e46;
+//   border-radius: 12px;
+//   text-decoration: none;
+//   width: 150px;
+//   height: 35px;
+//   cursor: pointer;
+// }
 
 a {
   color: #F0BB62;
@@ -25,13 +25,31 @@ a {
 
 
 .inputsubmit {
-  color: #F4EEA9;
-  background-color: #519259;
+  color: #075e46;
+  background-color: lightgrey;
   border-radius: 12px;
   width: 60px;
   height: 35px;
   cursor: pointer;
   margin: 20px;
   padding: 5px;
-  border: none;
+  border: solid darkgreen;
+}
+
+.btn-primary {
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-primary .btn-lg {
+  width: 200px;
+}
+
+.btn-dark {
+  border-radius: 12px;
+}
+
+.btn-light {
+  border-radius: 12px;
 }
