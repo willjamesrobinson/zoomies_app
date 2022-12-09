@@ -8,7 +8,7 @@
   <% if user_signed_in? %>
   <% else %>
   <div class="buttons" style="text-align: center;">
-    <%= link_to "Login", new_user_session_path, class: "btn btn-dark"  %>
+    <%= link_to "Log in", new_user_session_path, class: "btn btn-dark"  %>
     <%= link_to "Sign up", '/users/sign_up', class: "btn btn-dark" %>
   </div>
 </div>

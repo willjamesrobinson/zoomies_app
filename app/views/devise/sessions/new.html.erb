@@ -1,8 +1,8 @@
-<div class="container" style="margin-top:100px;">
+<div class="container" style="margin-top:100px; background-color:transparent;">
   <div class='text-center d-flex justify-content-center'>
     <div class="login col-xs-12 col-xs-offset-0 col-sm-6 col-sm-offset-6">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: "form-signin", data: { turbo: :false }}) do |f| %>
-          <h1 class="h3 mb-3 font-weight-normal">Log in!</h1>
+          <h1 class="h3 mb-3 font-weight-normal">Get zoomin!</h1>
           <%= f.label :email, class: "sr-only" %>
           <%= f.text_field :email, required: true,
             autofocus: true,
@@ -22,7 +22,7 @@
             <% end %>
           </div>
         <div class="form-actions d-flex justify-content rounded justify-content-center mt-3">
-          <%= f.submit "Log in", class:"btn btn-lg btn-primary btn-block border-radius-10" %>
+          <%= f.submit "Dog in", class:"btn btn-lg btn-primary btn-block border-radius-10" %>
         </div>
           <p class="mt-5 mb-3 text-muted justify-content-center">© 2022-2023</p>
       <% end %>
