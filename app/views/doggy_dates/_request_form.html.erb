@@ -46,10 +46,10 @@
           </div>
         </div>
       </div>
-      <div class="time"><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></div>
     </div>
   </div>
-<% elsif doggy_date.status == "pending" %>
+
+<% elsif doggy_date.status == "accepted" %>
   <div>
       <div class="answer <%= message.user == current_user ? "right" : "left" %>" id="message-<%= message.id %>">
         <div class="avatar">
