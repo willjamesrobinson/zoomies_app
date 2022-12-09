@@ -49,7 +49,6 @@ betty = User.new(email: "seed_user_betty@ymail.com", password: "654321", age: 44
 file = URI.open("https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
 betty.photo.attach(io: file, filename: "#{betty.first_name}.jpg", content_type: "image/jpg")
 print "Betty... "
-
 # Anja
 anja = User.new(email: "seed_user_anja@ymail.com", password: "123456", age: 27, gender: "female", first_name: "Anja", overview: "Egg likes to nap. When he is not napping he would like to meet other dogs to sniff around with in the park.", address: LOCATION.sample)
 file = URI.open("https://avatars.githubusercontent.com/u/83281237?v=4")
@@ -58,8 +57,6 @@ print "Anja... "
 # Talina
 talina = User.new(email: "seed_user_talina@ymail.com", password: "123456", age: 25, gender: "female", first_name: "Talina", overview: "Ruby loves to run. We're looking for other fast dogs to run with.", address: LOCATION.sample)
 file = URI.open("https://avatars.githubusercontent.com/u/79692926?v=4")
-talina = User.new(email: "seed_user_talina@ymail.com", password: "123456", age: 30, gender: "female", first_name: "Talina", overview: "Ruby loves to run. We're looking for other fast dogs to run with.", address: LOCATION.sample)
-file = URI.open("https://images.unsplash.com/photo-1564564295391-7f24f26f568b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80")
 talina.photo.attach(io: file, filename: "#{talina.first_name}.jpg", content_type: "image/jpg")
 print "Talina... "
 # Matt(hieu)
@@ -185,25 +182,13 @@ end
 
 # Cadbury
 cadbury = Dog.new(name: "Cadbury", age: 10, gender: "male", size: "large", breed: "labrador", personality: ["friendly", "energetic", "playful"])
-
-if bob.save && betty.save && talina.save && matt.save
-  # && ariani.save
-  puts "Created users Bob, Betty, Talina, Matt, Ariani"
-else
-  puts "ERROR creating Bob, Betty, Talina, Matt, Ariani"
-end
-
-cadbury = Dog.new(name: "Cadbury", age: 10, gender: "male", size: "medium", breed: "labrador", personality: ["friendly", "energetic", "playful"])
-
 cadbury_file = URI.open("https://images.unsplash.com/photo-1610112748593-d3e7dc10b519?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
 cadbury.photos.attach(io: cadbury_file, filename: "#{cadbury.name}1.jpg", content_type: "image/jpg")
 cadbury_file = URI.open("https://images.unsplash.com/photo-1610112749119-8c17fed117fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80")
 cadbury.photos.attach(io: cadbury_file, filename: "#{cadbury.name}2.jpg", content_type: "image/jpg")
 cadbury.user = bob
 print "Cadbury... "
-
 # Fluff & Fuzz
-
 fluff = Dog.new(name: "Fluff", age: 7, gender: "female", size: "small", breed: "pomeranian", personality: ["friendly", "slow", "playful"])
 fluff_file = URI.open("https://images.unsplash.com/photo-1582456891925-a53965520520?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80")
 fluff.photos.attach(io: fluff_file, filename: "#{fluff.name}1.jpg", content_type: "image/jpg")
@@ -218,19 +203,15 @@ fuzz_file = URI.open("https://images.unsplash.com/photo-1608819368353-02e726da66
 fuzz.photos.attach(io: fuzz_file, filename: "#{fuzz.name}2.jpg", content_type: "image/jpg")
 fuzz.user = betty
 print "Fuzz... "
-
 # Egg
-
 egg = Dog.new(name: "Egg", age: 6, gender: "male", size: "small", breed: "pug", personality: ["friendly", "slow", "shy"])
 egg_file = URI.open("https://images.unsplash.com/photo-1453227588063-bb302b62f50b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
 egg.photos.attach(io: egg_file, filename: "#{egg.name}1.jpg", content_type: "image/jpg")
 egg_file = URI.open("https://images.unsplash.com/photo-1469982866068-278880140412?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80")
 egg.photos.attach(io: egg_file, filename: "#{egg.name}2.jpg", content_type: "image/jpg")
-
 egg.user = anja
 print "Egg... "
 # Ruby
-
 ruby = Dog.new(name: "Ruby", age: 2, gender: "female", size: "large", breed: "saluki", personality: ["shy", "energetic", "rough"])
 ruby_file = URI.open("https://images.unsplash.com/photo-1483434748604-140edba26886?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1026&q=80")
 ruby.photos.attach(io: ruby_file, filename: "#{ruby.name}1.jpg", content_type: "image/jpg")
@@ -281,8 +262,10 @@ archie.user = anna
 print "Archie... "
 # Elsie
 elsie = Dog.new(name: "Elsie", age: 2, gender: "female", size: "small", breed: "golden doodle", personality: PERSONALITY.sample(3))
-elsie_file = URI.open("https://res.cloudinary.com/dtcaswh8v/image/upload/v1670518097/j3rwe5qlonjmtorkwrpp.jpg")
+elsie_file = URI.open("https://res.cloudinary.com/dtcaswh8v/image/upload/v1670540322/eeuqscp8cbnjrtbpixv9.jpg")
 elsie.photos.attach(io: elsie_file, filename: "#{elsie.name}1.jpg", content_type: "image/jpg")
+elsie_file = URI.open("https://res.cloudinary.com/dtcaswh8v/image/upload/v1670518097/j3rwe5qlonjmtorkwrpp.jpg")
+elsie.photos.attach(io: elsie_file, filename: "#{elsie.name}2.jpg", content_type: "image/jpg")
 elsie.user = lachlan
 print "Elsie... "
 # Turnip
@@ -313,6 +296,8 @@ print "Lenny... "
 salvus = Dog.new(name: "Salvus", age: 5, gender: "male", size: "large", breed: "collie", personality: PERSONALITY.sample(3))
 salvus_file = URI.open("https://res.cloudinary.com/dtcaswh8v/image/upload/v1670517479/tyu3bkrevpxg6zrr3aim.jpg")
 salvus.photos.attach(io: salvus_file, filename: "#{salvus.name}1.jpg", content_type: "image/jpg")
+salvus_file = URI.open("https://res.cloudinary.com/dtcaswh8v/image/upload/v1670540563/g2rdvv2mwaqicrtno1gl.png")
+salvus.photos.attach(io: salvus_file, filename: "#{salvus.name}2.png", content_type: "image/png")
 salvus.user = ben
 print "Salvus... "
 # Simba
