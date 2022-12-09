@@ -1,9 +1,9 @@
-<div class="d-flex flex-column m-3">
+<div class="d-flex flex-column m-3" style="height: 100vh;">
   <div class="d-inline-flex p-2 justify-content-center">
     <h1>Doggy Preferences</h1>
   </div>
   <div class="d-inline-flex p-2">
-    <form action="/matches" method="get">
+    <form action="/matches" method="get" data-turbo="false">
     <label for="distance" class="form-label"><h5>Distance from me (km)</h5></label>
     <br>
     <input id="distance" type="range" value="10" min="1" max="20" step="1" oninput="this.nextElementSibling.value = this.value">

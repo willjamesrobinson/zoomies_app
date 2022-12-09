@@ -12,7 +12,10 @@
         <%="and #{match.matcher.first_name}"%>
       </h3>
       <% if match.messages.present? %>
-        <p><%=match.messages.last.content%></p>
+        <p>
+        <%= "You: " if match.messages.last.user == current_user %>
+        <%=match.messages.last.content%>
+        </p>
       <%else%>
         <p>Say Hello!</p>
       <%end %>
@@ -34,7 +37,10 @@
           <%="and #{match.matchee.first_name}"%>
         </h3>
         <% if match.messages.present? %>
-          <p><%=match.messages.last.content%></p>
+          <p>
+          <%= "You: " if match.messages.last.user == current_user %>
+          <%=match.messages.last.content%>
+          </p>
         <%else%>
           <p>Say Hello!</p>
         <%end %>

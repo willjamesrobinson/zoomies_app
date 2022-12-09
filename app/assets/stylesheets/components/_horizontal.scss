@@ -16,8 +16,8 @@
   padding: 17px;
   border-radius: 20px;
   padding-bottom: 0px;
-  background-color: rgba(38,154,13,0.44);
-  box-shadow: 2px 2px 2px white;
+  background-color: rgb(255, 237, 211);
+  box-shadow: 2px 2px 2px #d98405;
 }
 
 .wrapper .item img {
@@ -30,16 +30,23 @@
 
 .wrapper .item p {
   text-decoration: none;
+  margin-bottom: 8px;
+  font-size: 20px;
 }
 
 a {
   text-decoration: none;
+  color: black;
 }
 
 .container {
+  // background-color: rgba(233,142,7,0.25);
+}
+
+body {
   background-color: rgba(233,142,7,0.25);
 }
 
-.body {
+html {
   background-color: rgba(233,142,7,0.25);
 }
